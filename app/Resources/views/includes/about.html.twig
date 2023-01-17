@@ -1,0 +1,20 @@
+ <section class="colorlib-about" data-section="about">
+    <div class="colorlib-narrow-content" id="aboutUs">
+ 
+    </div>
+</section>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "{{ path('aboutus_index') }}",
+            success: function (result) {
+                $("#aboutUs").html(result);
+            }, error: function (xhr, status, error) {
+                $("#aboutUs").html("Problem" + error);
+
+            }
+        });
+    });
+</script>

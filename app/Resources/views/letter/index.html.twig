@@ -1,0 +1,94 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+
+<div class="widget-box">
+<div class="widget-header widget-header-flat widget-header-small">
+<h5 class="widget-title">
+
+<i class="ace-icon fa fa-download "></i>
+Letters List
+</h5>
+<div class="widget-toolbar no-border">
+													<div class="inline dropdown-hover">
+														<button class="btn btn-minier btn-primary" style="margin-right: 35px;">
+															Downloads
+															<i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+														</button>
+														<ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+															<li class="active">
+<a id="btnExport" class="pull-right" onclick="javascript:xport.toXLS('datatables-example');">
+																<i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+ <i class="ace-icon fa fa-share "></i>														
+ 	Export Pdf
+																</a>
+															</li>
+															<li class="active">
+ <a href="#">
+																
+ <i class="ace-icon fa fa-download "></i>
+ 		Download Pdf
+																</a>
+															</li>
+													
+</ul>
+</div>
+</div>
+</div>
+</div>    
+    
+  <table id="datatables-example" class="table table-bordered table-striped table-condensed" style="font-size:11px; background:darkgray">    
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Ref Number</th>
+                <th>To:</th>
+                <th>Subject</th>
+               {# <th>Letter Body</th> #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for letter in letters %}
+            <tr>
+                <td><a href="{{ path('letter_show', { 'id': letter.id }) }}">{{ letter.id }}</a></td>
+                <td>{% if letter.date %}{{ letter.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ letter.refnumber }}</td>
+                                <td>{{ letter.organizationnames }}</td>
+   
+                                             <td>{{ letter.subject }}</td>              
+               {# <td>{{ letter.letterbody }}</td> #}
+       
+                <td>
+
+                                <div class="input-group column col-sm-4 col-xs-4 sidebar-offcanvas">
+                                    <div class="input-group-btn" >
+                                        <a class="btn btn-sm btn-info" href="{{ path('letter_show', { 'id': letter.id }) }}">
+                                            <i class="ace-icon fa fa-eye-slash"></i>
+</a>
+
+                                        <a class="btn btn-sm btn-warning" href="{{ path('letter_edit', { 'id': letter.id }) }}">
+                                            <i class="ace-icon fa fa-pencil"></i>
+</a>
+
+                                        <a class="btn btn-sm btn-default" href="{{ path('letter_print', { 'id': letter.id }) }}">
+                                            <i class="ace-icon fa fa-print"></i>
+</a>
+
+                                    </div>
+                                </div>  
+           
+               
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('letter_new') }}">Create a new letter</a>
+        </li>
+    </ul>
+{% endblock %}

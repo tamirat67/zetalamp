@@ -1,0 +1,142 @@
+{% extends "login_layout.html.twig" %}
+
+{% block body %}
+    <div class="align text-lg-center">
+        <div class="col-md-6">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="form-group has-feedback fa fa-user">
+                    <label for="username">User Name{{ 'security.login.username'|trans }}
+                        <input type="username" id="username" name="_username" placeholder="Username" value="{{ last_username }}" required="required" autocomplete="username" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </label>
+                </div>
+                <div class="form-group has-feedback fa fa-unlock">
+                    <label for="password">Pass-word{{ 'security.login.password'|trans }}
+                        <input type="password" id="password" name="_password" placeholder="Password"  required="required" autocomplete="current-password" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <input  type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">Remeber me</label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" href="/homemarquee" class="btn btn-primary btn-block btn-flat">
+                            <i class="fa fa-key"></i>
+
+                            Sign In
+                        </button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="{{path('fos_user_resetting_request')}}" class="btn btn-block btn-social btn-tumblr btn-flat">
+                    <i class="fa fa-unlock-alt"></i> I forgot my password
+                </a>
+                <a href="{{path('fos_user_registration_register') }}" class="btn btn-block btn-social btn-linkedin btn-flat">
+                    <i class="fa fa-file-text-o"></i> 
+                    Register a new membership
+                </a>
+            </div>
+
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <div class="login-container" style="padding-top: 20%; width: 50%">
+            <div class="position-relative">
+
+            </div><!--/position-relative-->
+        </div>
+    </div>
+    <div class="col-md-6">
+        <style>
+            .j_logo{
+                background-image: url("jlogo.png");
+                width: 100%;
+                height: 362px;
+
+            }
+        </style>
+        <div class="login-container" style="padding-top: 15%;">
+            <div class="position-relative">
+                <div class="j_logo">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% block navbar_right %}
+        {#<ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">#}
+                    {#{{ user.getUsername() }}#}
+                    {#Language
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">        
+                    <li>
+                        <a href="#">
+                            English
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Affan Oromo 
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Amharic 
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>    
+            </li>
+        </ul>    #}     
+          
+    {% endblock %}
+<!-- Main content -->
+                            <section class="content">
+                                {% block fos_user_content %}
+                                {% endblock fos_user_content %}
+                            {% block javascripts %}{% endblock %}
+
+                        </section>
+    {% block style_sheet %}
+        <link rel="stylesheet" href="{{ asset('bundles/app/lte/plugins/iCheck/square/blue.css')}}">
+    {% endblock style_sheet %}
+
+    {% block java_script %}
+        <script src="{{ asset('bundles/app/lte/plugins/iCheck/icheck.min.js')}}"></script>
+        <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' /* optional */
+                });
+            });
+        </script>
+    {% endblock java_script %}
+
+{% endblock %}

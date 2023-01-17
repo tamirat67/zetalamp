@@ -1,0 +1,19 @@
+visitorlog_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:VisitorLog:index" }
+    methods:  GET
+visitor_log:
+    path:     /{username}/show
+    defaults: { _controller: "Covid19Bundle:VisitorLog:showvisitorlog" }
+    prefix:   /visitorlog
+
+visitorlog_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:VisitorLog:show" }
+    methods:  GET
+visitorlog_stat:
+    path:     /userStatisctics
+    defaults: { _controller: "Covid19Bundle:VisitorLog:userStat" }
+
+
+

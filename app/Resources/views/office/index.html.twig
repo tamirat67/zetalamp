@@ -1,0 +1,292 @@
+{% extends 'home_page.html.twig' %} 
+
+
+{% block menu %}
+    <i class="fa fa-angle-double-right" > </i>
+    <a   href="#">  {% trans %}Setting{% endtrans %} </a>
+{% endblock %}
+
+{% block submenu %}
+    <i class="fa fa-angle-double-right" > </i>
+    <a   href="{{ path('office_index', {'parent':0}) }}">  {% trans %}Bureau/Office/Sector{% endtrans %}  </a>
+{% endblock %}
+{% block flash_message %} 
+    {# pass a string argument to get only the messages of that type #}
+    {% for message in app.flashes('success') %}
+        <div id="success-alert" class="alert alert-success alert-dismissible show"
+             role="alert">
+            <strong>{% trans %}Success!{% endtrans %}</strong>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning alert-dismissible show" role="alert">
+            <strong>{% trans %}Warning!{% endtrans %}</strong>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+    {# pass a string argument to get only the messages of that type #}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-error alert-dismissible show" role="alert">
+            <strong>{% trans %}Error!{% endtrans %}</strong>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+
+    {# pass a string argument to get only the messages of that type #}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-error alert-dismissible show" role="alert">
+            <strong>{% trans %}Error!{% endtrans %}</strong>
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block body %}
+    <!-- modal  --> 
+    <div   id="showOfficeModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% trans %}Bureau/Office/Sector Detail Information{% endtrans %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="showOfficeContent">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal -->
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <section class="panel" id="form_control_office">
+            {% block sidebartitle %}
+                <h3 class="green"><i class="fa fa-plus"></i> {% trans %}New{% endtrans %} </h3>
+            {% endblock %}
+            {#{ app.user.office }#}
+            {{ form_start(form, {'action': path('office_new')}) }}
+
+            {{ form_row(form.name) }}
+            <!-- modal  -->
+            <div   id="showDescriptionModal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="showDescriptionContent">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span title="{% trans %}ShowDescription{% endtrans %}" class="btn  btn-sm btn-success" data-toggle="modal" data-target="#showDescriptionModal" id="showDescriptionDetail">
+                <i class="glyphicon"> {% trans %}Description{% endtrans %}</i>
+            </span> 
+            {{ form_rest(form) }}
+            <input class="btn btn-primary btn-responsive btn-sm btn-block" type="submit" value="{% trans %}Create{% endtrans %}" />   {{ form_end(form) }}
+
+        </section>
+
+    </div>
+
+
+
+    <div class="col-md-9 col-sm-9 col-xs-12">
+
+        {% block list %}
+            <h3>
+                <ul>
+
+                    {% set counter=1 %}
+                    {% for office in offices %}
+                        <li style="list-style: none">
+                            <a id="more{{office.id}}" href="#">
+                                <span id="more{{office.id}}sign" class="glyphicon glyphicon-plus-sign"></span>
+                            </a>
+                            {{ office.name }}
+                            <!-- <a href="{{ path('offices_childs',{'id': office.id}) }}" class="btn  btn-xs btn-info right pull-right" title="Child office  Registration"> <i class="ace-icon glyphicon glyphicon-hand-right "></i> Register new Child Office</a>  -->
+
+                            <span title="{% trans %}Show{% endtrans %}" class="pull-right btn  btn-xs" data-toggle="modal" data-target="#showOfficeModal" id="showofficeDetail{{office.id}}">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </span>
+
+                            <!-- edit link -->
+                            <span title="Edit" class="btn  btn-xs pull-right" id="editoffice{{office.id}}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                <i class="&#xf676"></i>
+                            </span> 
+
+                            {#                            ######################################################################################################################################                            #}
+                            <span data-toggle="modal"
+                                  data-target="#showUserInfoModal" id="showLog{{office.id}}" type="button" class="pull-right btn  btn-xs">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+
+                            <div class="modal fade" id="showUserInfoModal"
+                                 role="dialog" aria-labelledby="showUserInfoModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 80%; " role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <strong class="modal-title" >{% trans %}Log History{% endtrans %}</strong>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="showUserInfoModalContent">
+                                        </div>
+                                        <div class="modal-body" id="showLogModalContent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <script>
+                                $("#showLog{{office.id}}").click(function (e) {
+                                    $.ajax({
+                                        url: "{{ path('ocaua_entity_log', {'selectedBundle':'ocaua','selectedEntity':'Office', 'id': office.id }) }}",
+                                        success: function (result) {
+                                            $("#showLogModalContent").html(result);
+                                            e.preventDefault();
+                                        }, error: function (xhr, status, error) {
+                                            e.preventDefault();
+                                        }
+                                    });
+                                });
+                            </script>
+                            {#                            ######################################################################################################################################                                                        #}
+
+
+
+
+                            <hr width="100%">
+                            <div id="more{{office.id}}content" style="display: none"></div>
+
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#showofficeDetail{{office.id}}").click(function (e) {
+                                        $.ajax({
+                                            url: "{{ path('office_show', {'id':office.id}) }}",
+                                            success: function (result) {
+                                                $("#showOfficeContent").html(result);
+                                                e.preventDefault();
+                                            }, error: function (xhr, status, error) {
+                                                $("#showOfficeContent").html("Problem");
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                });
+
+                            </script>
+
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#editoffice{{office.id}}").click(function (e) {
+                                        $.ajax({
+                                            url: "{{ path('office_edit', {'id':office.id}) }}",
+                                            success: function (result) {
+                                                $("#form_control_office").html(result);
+                                                e.preventDefault();
+                                            }, error: function (xhr, status, error) {
+                                                $("#form_control_office").html("Problem");
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+
+
+
+
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#more{{office.id}}").click(function () {
+                                        var x = document.getElementById("more{{office.id}}content");
+                                        if (x.style.display === "none") {
+
+                                {#                                        x.style.display = "none";
+                                                                }#}
+                                            $.ajax({
+                                                url: "{{ path('office_index', {'parent':office.id}) }}",
+                                                success: function (result) {
+                                                    $("#more{{office.id}}content").html(result);
+
+                                                }, error: function (xhr, status, error) {
+                                                    $("#more{{office.id}}content").html("Problem");
+
+                                                }
+                                            });
+                                            x.style.display = "block";
+                                            var minus = document.getElementById("more{{office.id}}sign");
+                                            minus.classList.remove("glyphicon-plus-sign");
+                                            minus.classList.add("glyphicon-minus-sign");
+                                        } else {
+                                            x.style.display = "none";
+                                            var plus = document.getElementById("more{{office.id}}sign");
+                                            plus.classList.remove("glyphicon-minus-sign");
+                                            plus.classList.add("glyphicon-plus-sign");
+                                        }
+                                    }
+
+                                    );
+
+                                });
+                            </script>
+
+
+
+                            {% set counter=counter+1 %}
+
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </h3>
+        {% endblock   %}
+
+        <div class="row well  well-sm small ">
+            <div class="col-md-1 col-sm-1 co2-xs-12">
+
+
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                <h5  style="padding-top: 0px;">
+       {% trans %}Total Bureau/Office/Sector Count{% endtrans %}: {{ offices.getTotalItemCount }} 
+                </h5>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12"> 
+             {#   {{ knp_pagination_render(offices) }} #}
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!------ Include the above in your HEAD tag ---------->
+
+{% endblock %}

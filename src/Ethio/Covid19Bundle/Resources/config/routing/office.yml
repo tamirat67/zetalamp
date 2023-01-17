@@ -1,0 +1,32 @@
+office_index:
+    path:     /get-sub-tree/{parent}/office-tree
+    defaults: { _controller: "Covid19Bundle:Office:index" }
+    methods:  [GET, POST]
+offices_childs:
+    path:     /{id}/childs
+    defaults: { _controller: "Covid19Bundle:Office:child" }
+    methods:  [GET, POST]
+
+office_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:Office:show" }
+    methods:  GET
+organization_office_show:
+    path:     /{id}/showorgofiice
+    defaults: { _controller: "Covid19Bundle:Office:showorgoffice" }
+    methods:  GET
+
+office_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:Office:new" }
+    methods:  [GET, POST]
+
+office_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:Office:edit" }
+    methods:  [GET, POST]
+
+office_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:Office:delete" }
+    methods:  DELETE 

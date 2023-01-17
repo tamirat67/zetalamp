@@ -1,0 +1,51 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+    <h1>Letter</h1>
+
+  <table id="datatables-example" class="table table-bordered table-striped table-condensed" style="font-size:11px; background:darkgray">    
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ letter.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if letter.date %}{{ letter.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ref Number</th>
+                <td>{{ letter.refnumber }}</td>
+            </tr>
+              <tr>
+                <th>To</th>
+                <td>{{ letter.organizationnames }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ letter.subject }}</td>              
+            </tr>
+
+            <tr>
+                <th>Letter_body</th>
+                <td>{{ letter.letterbody }}</td>
+            </tr>
+          
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('letter_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('letter_edit', { 'id': letter.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

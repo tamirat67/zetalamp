@@ -1,0 +1,156 @@
+OST\UABundle\Entity\User:
+  type:  entity
+  repositoryClass: OST\UABundle\Repository\UserRepository
+  table: fos_user
+  gedmo:
+    loggable: true
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+      
+    first_name:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+#        translatable: true
+        
+    middle_name:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+         versioned: true
+#         translatable: true
+         
+    last_name:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+         versioned: true
+#         translatable: true
+    phone:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+         versioned: true
+#         translatable: true
+    status:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+         versioned: true
+#         translatable: true
+         
+    gender:
+      type: string
+      length: 20
+      nullable: true
+      gedmo:
+        versioned: true
+        
+    profile_pic:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+        
+    card_no:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+        
+    building_no:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+        
+    office_no:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+        
+    created_at:
+      type: date
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+          
+    updated_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+          
+    dn:
+      type: string
+      length: 128
+      nullable: true
+      gedmo:
+        versioned: true
+#        translatable: true
+        
+  manyToOne:
+    office:
+      targetEntity: Ethio\Covid19Bundle\Entity\Office
+      inversedBy: users
+      nullable: true      
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        versioned: true
+    createdBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        blameable:
+          on: create
+    updatedBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        blameable:
+          on: update
+          
+  manyToMany:
+    groups:
+      targetEntity: Group
+      inversedBy: users
+      joinTable:
+        name: users_groups
+        joinColumns:
+          user_id:
+            referencedColumnName: id
+            nullable: false
+            unique: false
+        inverseJoinColumns:
+          group_id:
+            referencedColumnName: id
+            nullable: false
+            unique: false
+            
+

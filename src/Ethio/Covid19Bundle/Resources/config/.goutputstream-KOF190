@@ -1,0 +1,222 @@
+covid19_gulantaa:
+    resource: "@Covid19Bundle/Resources/config/routing/gulantaa.yml"
+    prefix:   /gulantaa
+covid19_entity_translation:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/{locale}/{field}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:saveTranslation }
+    methods:  [GET, POST]
+
+covid19_kaffaltiigalmeessi:
+     resource: "@Covid19Bundle/Resources/config/routing/kaffaltiigalmeessi.yml"
+     prefix:   /kaffaltiigalmeessi
+covid19_transfer:
+     resource: "@Covid19Bundle/Resources/config/routing/transfer.yml"
+     prefix:   /transfer
+covid19_training:
+     resource: "@Covid19Bundle/Resources/config/routing/training.yml"
+     prefix:   /training
+covid19_carraahojii:
+     resource: "@Covid19Bundle/Resources/config/routing/carraahojii.yml"
+     prefix:   /carraahojii
+covid19_caalbaasiigalmeessi:
+     resource: "@Covid19Bundle/Resources/config/routing/caalbaasiigalmeessi.yml"
+     prefix:   /caalbaasiigalmeessi
+homemarquee:
+    path:   /homemarquee
+    defaults: { _controller: Covid19Bundle:Default:homemarquee }
+maps:
+    path:   /maps
+    defaults: { _controller: Covid19Bundle:Default:maps }
+help:
+    path:   /help
+    defaults: { _controller: Covid19Bundle:Default:help }
+document:
+    path:   /document
+    defaults: { _controller: Covid19Bundle:Default:document }
+contact:
+    path:   /contact
+    defaults: { _controller: Covid19Bundle:Default:contact }
+covid19_about:
+    resource: "@Covid19Bundle/Resources/config/routing/about.yml"
+    prefix:   /about
+admin_home_page:
+    path:   /adminhomepage
+    defaults: { _controller: Covid19Bundle:Default:adminHomePage }
+
+login:
+    path:     /login
+    defaults: { _controller: FOSUserBundle:Security:home_page }
+homepage:
+    resource: "@Covid19Bundle/Resources/config/routing/project.yml"
+    prefix:   /homepage
+
+covid19_project:
+       resource: "@Covid19Bundle/Resources/config/routing/project.yml"
+       prefix:   /project
+covid19_owner:
+        resource: "@Covid19Bundle/Resources/config/routing/owner.yml"
+        prefix:   /owner
+covid19_town:
+        resource: "@Covid19Bundle/Resources/config/routing/town.yml"
+        prefix:   /town
+covid19_woreda:
+        resource: "@Covid19Bundle/Resources/config/routing/woreda.yml"
+        prefix:   /woreda
+
+covid19_hojjatoota:
+        resource: "@Covid19Bundle/Resources/config/routing/hojjatoota.yml"
+        prefix:   /hojjatoota
+covid19_qabeenya:
+        resource: "@Covid19Bundle/Resources/config/routing/qabeenya.yml"
+        prefix:   /qabeenya
+covid19_gorsitootaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gorsitootaa.yml"
+        prefix:   /gorsitootaa
+covid19_maadaalli:
+        resource: "@Covid19Bundle/Resources/config/routing/maadaalli.yml"
+        prefix:   /maadaalli
+covid19_koontiraaktaroota:
+        resource: "@Covid19Bundle/Resources/config/routing/koontiraaktaroota.yml"
+        prefix:   /koontiraaktaroota
+covid19_miseensota:
+        resource: "@Covid19Bundle/Resources/config/routing/miseensota.yml"
+        prefix:   /miseensota
+covid19_koontiraaktarootaimx:
+        resource: "@Covid19Bundle/Resources/config/routing/koontiraaktarootaimx.yml"
+        prefix:   /koontiraaktarootaimx
+covid19_dizzaayinii:
+        resource: "@Covid19Bundle/Resources/config/routing/dizzaayinii.yml"
+        prefix:   /dizzaayinii
+covid19_pirojektii:
+        resource: "@Covid19Bundle/Resources/config/routing/pirojektii.yml"
+        prefix:   /pirojektii
+covid19_kaffaltii:
+        resource: "@Covid19Bundle/Resources/config/routing/kaffaltii.yml"
+        prefix:   /kaffaltii
+covid19_abbaapirojektii:
+        resource: "@Covid19Bundle/Resources/config/routing/abbaapirojektii.yml"
+        prefix:   /abbaapirojektii
+covid19_gandamagaala:
+        resource: "@Covid19Bundle/Resources/config/routing/gandamagaala.yml"
+        prefix:   /gandamagaala
+covid19_aanaa:
+        resource: "@Covid19Bundle/Resources/config/routing/aanaa.yml"
+        prefix:   /aanaa
+covid19_ogeessotaa:
+        resource: "@Covid19Bundle/Resources/config/routing/ogeessotaa.yml"
+        prefix:   /ogeessotaa
+covid19_kaffaltiitajaajilaa:
+        resource: "@Covid19Bundle/Resources/config/routing/kaffaltiitajaajilaa.yml"
+        prefix:   /kaffaltiitajaajilaa
+covid19_ragaaogummaa:
+        resource: "@Covid19Bundle/Resources/config/routing/ragaaogummaa.yml"
+        prefix:   /ragaaogummaa
+covid19_daandiidizzaayinii:
+        resource: "@Covid19Bundle/Resources/config/routing/daandiidizzaayinii.yml"
+        prefix:   /daandiidizzaayinii
+covid19_bishaaniidizzaayinii:
+        resource: "@Covid19Bundle/Resources/config/routing/bishaaniidizzaayinii.yml"
+        prefix:   /bishaaniidizzaayinii
+covid19_gosahayyamaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gosahayyamaa.yml"
+        prefix:   /gosahayyamaa
+covid19_hayyamaa:
+        resource: "@Covid19Bundle/Resources/config/routing/hayyamaa.yml"
+        prefix:   /hayyamaa
+covid19_water:
+        resource: "@Covid19Bundle/Resources/config/routing/water.yml"
+        prefix:   /water
+covid19_road:
+        resource: "@Covid19Bundle/Resources/config/routing/road.yml"
+        prefix:   /road
+covid19_gorsaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gorsaa.yml"
+        prefix:   /gorsaa
+covid19_koontraaktara:
+        resource: "@Covid19Bundle/Resources/config/routing/koontraaktara.yml"
+        prefix:   /koontraaktara
+covid19_waldaa:
+        resource: "@Covid19Bundle/Resources/config/routing/waldaa.yml"
+        prefix:   /waldaa
+covid19_daandiiogeessotaa:
+        resource: "@Covid19Bundle/Resources/config/routing/daandiiogeessotaa.yml"
+        prefix:   /daandiiogeessotaa
+covid19_bishaaniiogeessotaa:
+        resource: "@Covid19Bundle/Resources/config/routing/bishaaniiogeessotaa.yml"
+        prefix:   /bishaaniiogeessotaa
+covid19_roadkaffaltiigalmeessi:
+        resource: "@Covid19Bundle/Resources/config/routing/roadkaffaltiigalmeessi.yml"
+        prefix:   /roadkaffaltiigalmeessi
+covid19_waterkaffaltiigalmeessi:
+        resource: "@Covid19Bundle/Resources/config/routing/waterkaffaltiigalmeessi.yml"
+        prefix:   /waterkaffaltiigalmeessi
+covid19_watercarraahojii:
+        resource: "@Covid19Bundle/Resources/config/routing/watercarraahojii.yml"
+        prefix:   /watercarraahojii
+covid19_roadcarraahojii:
+        resource: "@Covid19Bundle/Resources/config/routing/roadcarraahojii.yml"
+        prefix:   /roadcarraahojii
+covid19_maddaalliidhihoo:
+        resource: "@Covid19Bundle/Resources/config/routing/maddaalliidhihoo.yml"
+        prefix:   /maddaalliidhihoo
+covid19_sadarkaahayyamaa:
+        resource: "@Covid19Bundle/Resources/config/routing/sadarkaahayyamaa.yml"
+        prefix:   /sadarkaahayyamaa
+covid19_kaffaltiiharoomsaa:
+        resource: "@Covid19Bundle/Resources/config/routing/kaffaltiiharoomsaa.yml"
+        prefix:   /kaffaltiiharoomsaa
+covid19_gorsitootaasadarkaahayyamaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gorsitootaasadarkaahayyamaa.yml"
+        prefix:   /gorsitootaasadarkaahayyamaa
+covid19_gorsitootaakaffaltiihayyamaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gorsitootaakaffaltiihayyamaa.yml"
+        prefix:   /gorsitootaakaffaltiihayyamaa
+covid19_imxkaffaltiiharoomsaa:
+        resource: "@Covid19Bundle/Resources/config/routing/imxkaffaltiiharoomsaa.yml"
+        prefix:   /imxkaffaltiiharoomsaa
+covid19_ogummaakaffaltiihaaromsa:
+        resource: "@Covid19Bundle/Resources/config/routing/ogummaakaffaltiihaaromsa.yml"
+        prefix:   /ogummaakaffaltiihaaromsa
+covid19_wabummagalmeessi:
+        resource: "@Covid19Bundle/Resources/config/routing/wabummagalmeessi.yml"
+        prefix:   /wabummagalmeessi
+covid19_gosawabummaa:
+        resource: "@Covid19Bundle/Resources/config/routing/gosawabummaa.yml"
+        prefix:   /gosawabummaa
+covid19_roadwabummagalmeessi:
+        resource: "@Covid19Bundle/Resources/config/routing/roadwabummagalmeessi.yml"
+        prefix:   /roadwabummagalmeessi
+covid19_waterwabummagalmeessi:
+        resource: "@Covid19Bundle/Resources/config/routing/waterwabummagalmeessi.yml"
+        prefix:   /waterwabummagalmeessi
+covid19_entity_translation:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/{locale}/{field}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:saveTranslation }
+    methods:  [GET, POST]
+covid19_entity_log:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:logShow }
+    methods:  [GET]    
+covid19_office:
+    resource: "@Covid19Bundle/Resources/config/routing/office.yml"
+    prefix:   /office
+    
+covid19_entity_log:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/entity-log
+    defaults: { _controller: AppBundle:Default:logShow }
+    methods:  [GET]
+
+covid19_check_logs:
+    path:     /checkLogs
+    defaults: { _controller: AppBundle:Default:checkLogs }
+    methods:  [GET]
+
+
+
+
+
+
+
+
+
+        

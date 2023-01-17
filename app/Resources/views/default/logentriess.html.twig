@@ -1,0 +1,94 @@
+{% extends 'home_page.html.twig' %}
+
+ 
+{% block menu %}
+    <i class="fa fa-angle-double-right" > </i> 
+<a   href="#">{% trans %}Security{% endtrans %} </a>
+{% endblock %}
+
+{% block submenu %}
+       <i class="fa fa-angle-double-right" > </i> 
+ <a   href="{{ path('ocaua_check_logs') }}">  {% trans %}Log{% endtrans %}</a> 
+{% endblock %}
+ 
+{% block application_simple_title %}
+    <strong> {% trans %}Record Log{% endtrans %}</strong>
+{% endblock %}
+
+{% block body %}
+    <div class="input-group">
+        <span class="input-group-addon"   >
+            <span class="glyphicon glyphicon-check"/>
+                
+            </span>
+                {% trans %}Total logs per page{% endtrans %} : <strong>{{logs|length}}</strong>
+            </span>
+        </span>
+    </div>
+
+    <table id="datatables-example" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{% trans %}Action{% endtrans %}</th>
+                <th>{% trans %}Logged At{% endtrans %}</th>
+                <th>{% trans %}Object Id{% endtrans %}</th>
+                <th>{% trans %}Object Class{% endtrans %}</th>
+                <th>{% trans %}Version{% endtrans %}</th>
+                <th>{% trans %}Data{% endtrans %}</th>
+                <th>{% trans %}Username{% endtrans %}</th>
+                <th>{% trans %}Id{% endtrans %}</th>
+                    {#<th>Actions</th>#}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in logs %}
+
+                <tr>
+                    <td>{{ entity.action }}</a></td>
+                    <td>{% if entity.loggedAt %}{{ entity.loggedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.objectId }}</td>
+                    <td>{{ entity.objectClass }}</td>
+                    <td>{{ entity.version }}</td>
+                    <td>
+                        {% for key, value in entity.data %}
+                            {{ key }} :
+                            {% if value.timestamp is defined %}
+                                {{ value|date('m/d/Y') }}
+                            {% else %}
+                                {% for value1 in value %}
+                                {{ value1 }}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ entity.username }}</td>
+                    <td>{{ entity.id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {# total items count #}
+<div class="row well well-sm small  ">
+<div class="col-md-1 col-sm-1 co2-xs-12">
+   </div>
+<div class="col-md-4 col-sm-4 col-xs-12 ">
+<h5  style="padding-top: 0px;">
+{% trans %}Total Log Count{% endtrans %}: {{ logs.getTotalItemCount }}</h5>
+</div>
+<div class="col-md-7 col-sm-7 col-xs-12">  {{ knp_pagination_render(logs) }}
+</div>
+    </div>
+
+
+    <script src="{{ asset('bundles/plugins/js/jquery.datatables.min.js') }}"></script>
+    <script src="{{ asset('bundles/plugins/js/jquery.datatables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/plugins/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('bundles/plugins/js/main.js') }}"></script>
+        <script src="{{ asset('bundles/plugins/js/jquery.slimscroll.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#datatables-example').DataTable();
+        });
+    </script>
+    
+{% endblock %}

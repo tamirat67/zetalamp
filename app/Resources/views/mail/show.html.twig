@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mail</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mail.id }}</td>
+            </tr>
+            <tr>
+                <th>Mail_from</th>
+                <td>{{ mail.mailfrom }}</td>
+            </tr>
+            <tr>
+                <th>Mail_to</th>
+                <td>{{ mail.mailto }}</td>
+            </tr>
+            <tr>
+                <th>Mail_subject</th>
+                <td>{{ mail.mailsubject }}</td>
+            </tr>
+            <tr>
+                <th>Mail_body</th>
+                <td>{{ mail.mailbody }}</td>
+            </tr>
+            <tr>
+                <th>Mail_date_gregorian</th>
+                <td>{% if mail.maildategregorian %}{{ mail.maildategregorian|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mail_date_ethiopian</th>
+                <td>{{ mail.maildateethiopian }}</td>
+            </tr>
+            <tr>
+                <th>Mail_tag</th>
+                <td>{{ mail.mailtag }}</td>
+            </tr>
+            <tr>
+                <th>Is_draft</th>
+                <td>{% if mail.isdraft %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Is_sent</th>
+                <td>{% if mail.issent %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Is_read</th>
+                <td>{% if mail.isread %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{% if mail.createdat %}{{ mail.createdat|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{% if mail.updatedat %}{{ mail.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mail_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('mail_edit', { 'id': mail.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

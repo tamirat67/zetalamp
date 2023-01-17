@@ -1,0 +1,94 @@
+OST\UABundle\Entity\Mail:
+  type: entity
+  table: oroconst_mail
+  gedmo:
+    loggable: true
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    mail_from:
+      type: string
+      length: 255
+      nullable: false
+      gedmo:
+        versioned: true
+    mail_to:
+      type: string
+      length: 255
+      nullable: false
+      gedmo:
+        versioned: true
+    mail_subject:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+    mail_body:
+      type: text
+      nullable: true
+      gedmo:
+        versioned: true
+    mail_date_gregorian:
+      type: datetime
+      nullable: false
+      gedmo:
+        versioned: true
+    mail_date_ethiopian:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+    mail_tag:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true
+    is_draft:
+      type: boolean
+      nullable: true
+      gedmo:
+        versioned: true
+    is_sent:
+      type: boolean
+      nullable: true
+      gedmo:
+        versioned: true
+    is_read:
+      type: boolean
+      nullable: true
+      gedmo:
+        versioned: true
+    created_at:
+       type: date
+       nullable: true
+       gedmo:
+         timestampable:
+           on: create
+    updated_at:
+       type: datetime
+       nullable: true
+       gedmo:
+         timestampable:
+           on: update
+  manyToOne:
+    sender:
+       targetEntity: User
+    receiver:
+       targetEntity: User
+    repliedTo:
+       targetEntity: Mail
+    createdBy:
+      targetEntity: User
+      gedmo:
+        blameable:
+          on: create
+    updatedBy:
+      targetEntity: User
+      gedmo:
+        blameable:
+          on: update

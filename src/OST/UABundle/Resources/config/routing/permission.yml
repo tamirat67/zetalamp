@@ -1,0 +1,24 @@
+permission_index:
+    path:     /
+    defaults: { _controller: "OSTUABundle:Permission:index" }
+    methods:  [GET, POST]
+
+permission_show:
+    path:     /{id}/show
+    defaults: { _controller: "OSTUABundle:Permission:show" }
+    methods:  GET
+
+permission_new:
+    path:     /new
+    defaults: { _controller: "OSTUABundle:Permission:new" }
+    methods:  [GET, POST]
+
+permission_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OSTUABundle:Permission:edit" }
+    methods:  [GET, POST]
+
+permission_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OSTUABundle:Permission:delete" }
+    methods:  DELETE

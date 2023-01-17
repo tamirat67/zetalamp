@@ -1,0 +1,4 @@
+boolean.yes_or_no: 'Yes or No'
+boolean.no: 'No'
+number.lower_than: 'Lower Than'
+number.lower_than_equal: 'Lower Than/or Equal'

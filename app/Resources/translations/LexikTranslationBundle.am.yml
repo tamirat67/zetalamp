@@ -1,0 +1,8 @@
+translations.invalidate_cache: '__Translations Invalidate Cache'
+translations.domain: '__Translations Domain'
+translations.cache_removed: '__Translations Cache Removed'
+translations.save: '__Translations Save'
+translations.show_hide_columns: '__Translations Show Hide Columns'
+translations.toggle_all_columns: '__Translations Toggle All Columns'
+translations.successfully_added: '__Translations Successfully  Added'
+translations.update_failed: '__Translations Update Failed'

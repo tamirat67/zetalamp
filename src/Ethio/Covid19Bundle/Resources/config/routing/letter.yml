@@ -1,0 +1,29 @@
+letter_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:Letter:index" }
+    methods:  GET
+
+letter_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:Letter:show" }
+    methods:  GET
+letter_print:
+    path:     /{id}/print
+    defaults: { _controller: "Covid19Bundle:Letter:Print" }
+    methods:  GET
+    
+
+letter_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:Letter:new" }
+    methods:  [GET, POST]
+
+letter_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:Letter:edit" }
+    methods:  [GET, POST]
+
+letter_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:Letter:delete" }
+    methods:  DELETE

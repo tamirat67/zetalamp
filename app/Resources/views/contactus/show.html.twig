@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contactu</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contactU.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contactU.email }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ contactU.subject }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ contactU.message }}</td>
+            </tr>
+            <tr>
+                <th>Type_of_message</th>
+                <td>{{ contactU.typeofmessage }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if contactU.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{% if contactU.createdat %}{{ contactU.createdat|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{% if contactU.updatedat %}{{ contactU.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contactus_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('contactus_edit', { 'id': contactU.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

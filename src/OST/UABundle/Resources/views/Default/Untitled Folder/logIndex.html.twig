@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table id="datatables-example" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Action</th>
+            <th>Logged at</th>
+            <th>Object id</th>
+            <th>Object class</th>
+            <th>Version</th>
+            <th>Data</th>
+            <th>Username</th>
+            <th>Id</th>
+            {#<th>Actions</th>#}
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity1 in logs %}
+            {{ dump(entity1) }}
+            {% for entity in entity1 %}
+                <tr>
+                    <td><a href="#">{{ entity.action }}</a></td>
+                    <td>{% if entity.loggedAt %}{{ entity.loggedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.objectId }}</td>
+                    <td>{{ entity.objectClass }}</td>
+                    <td>{{ entity.version }}</td>
+                    <td>
+                        {% for key, value in entity.data %}
+                            {{ key }} :
+                            {% if value.timestamp is defined %}
+                                {{ value|date('m/d/Y') }}
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ entity.username }}</td>
+                    <td>{{ entity.id }}</td>
+                    {#<td>#}
+                    {#<div class="input-group column col-xs-2 sidebar-offcanvas">#}
+                    {#<div class="input-group-btn" >#}
+                    {#<a class="btn btn-info" href="{{ path('admin_ExtLogEntries_show', { 'id': entity.id }) }}">show</a>#}
+                    {#</div><!-- /btn-group -->#}
+                    {#</div><!-- /input-group -->#}
+                    {#</td>#}
+                    {#<td>#}
+                    {#<ul>#}
+                    {#<li>#}
+                    {#<a href="{{ path('admin_ExtLogEntries_show', { 'id': entity.id }) }}">show</a>#}
+                    {#</li>#}
+                    {#</ul>#}
+                    {#</td>#}
+                </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{{ asset('bundles/juprojectmanagement/miminium-master/asset/js/plugins/jquery.datatables.min.js') }}"></script>
+    <script src="{{ asset('bundles/juprojectmanagement/miminium-master/asset/js/plugins/datatables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/juprojectmanagement/miminium-master/asset/js/plugins/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('bundles/juprojectmanagement/miminium-master/asset/js/main') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#datatables-example').DataTable();
+        });
+    </script>
+{% endblock %}

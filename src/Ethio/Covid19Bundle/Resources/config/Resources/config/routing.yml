@@ -1,0 +1,3 @@
+jimma_constructions_homepage:
+    path:     /
+    defaults: { _controller: JimmaConstructionsBundle:Default:index }

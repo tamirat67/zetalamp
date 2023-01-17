@@ -1,0 +1,270 @@
+{% extends 'home_page.html.twig' %}
+{% block menu %}
+    <i class="fa fa-angle-double-right" > </i> 
+<a   href="#">   {% trans %}User Management{% endtrans %} </a>
+{% endblock %}
+
+{% block submenu %}
+       <i class="fa fa-angle-double-right" > </i> 
+ <a   href="{{ path('permission_index') }}"> 
+  {% trans %}Permission{% endtrans %}  </a> 
+{% endblock %}
+  
+                                        {% block flash_message %}
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('success') %}
+                                                <div id="success-alert" class="alert alert-success alert-dismissible show"
+                                                     role="alert">
+                                                    <strong>Success!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+                                            {% for message in app.flashes('warning') %}
+                                                <div class="alert alert-warning alert-dismissible show" role="alert">
+                                                    <strong>Warning!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('error') %}
+                                                <div class="alert alert-error alert-dismissible show" role="alert">
+                                                    <strong>Error!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('notice') %}
+                                                <div class="alert alert-error alert-dismissible show" role="alert">
+                                                    <strong>Error!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+
+                                        {% endblock %}
+{% block body %}
+
+ <!-- modal  -->
+    <div   id="showAssetgroupModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% trans %}Asset Permission Detail Information{% endtrans %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="showAssetgroupContent">
+                </div>
+            </div>
+        </div>
+    </div>
+{#% if is_granted('CREATE_PERMISSION', permission) %#}
+
+<div class="col-md-3 col-sm-3 col-xs-12">
+    <section class="panel" id="formside_permission">
+        {% block sidebartitle %}
+            <h3 class="green"><i class="fa fa-plus"></i> 
+            {% trans %}New{% endtrans %}</h3>
+        {% endblock %}
+
+            
+        {{ form_start(form, {'action': path('permission_new')}) }}
+             {{ form_row(form.name) }}
+          <!-- modal  -->
+             <div   id="showDescriptionModal" class="modal" tabindex="-1" role="dialog">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body" id="showDescriptionContent">
+                             {{ form_label(form.description) }}
+                             {{ form_widget(form.description) }}
+                         </div>
+                     </div>
+                 </div>
+             </div> 
+             <span title="{% trans %}ShowDescription{% endtrans %}" class="btn  btn-sm btn-success" data-toggle="modal" data-target="#showDescriptionModal" id="showDescriptionDetail">
+                <i class="glyphicon"> {% trans %}Click  to add description{% endtrans %}</i>  
+                 </span>
+             <input class="btn btn-primary btn-responsive btn-sm btn-block" type="submit" value="{% trans %}Create{% endtrans %}" /> 
+                        {{ form_end(form) }}
+                   
+<!-- 
+        <table>
+            <tr>
+                <td>  <input class="btn btn-primary btn-responsive" type="submit" value="Add" />
+                    {{ form_end(form) }}
+                </td>
+            </tr>
+        </table> 
+-->
+    </section>
+</div>
+{#% endif %#}
+<!-- /muke -->
+
+
+    <h1 class="col-md-9 box box-primary" style="padding-left: 20%; background-color: #ddd;">User Role Permissions</h1>
+<div class="col-md-9">
+                {% block list %}
+               
+ 
+                    <table   id="PrintableContent"  class="table table-striped jambo_table bulk_action">   
+      
+                                    <thead>
+                                    <tr class="header"  >
+                                        <th>#</th>
+                                        <th>{% trans %}Name{% endtrans %}</th>
+                                        <!-- <th>Description</th> -->
+                                        <th  id="no-print" class="input-group column col-sm-2 col-xs-1 sidebar-offcanvas">{% trans %}Action{% endtrans %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% set counter=1 %}
+                                    {% for permission in permissions %}
+                                        <tr class="active">
+                                            <td>{{ counter }}</td>
+                                            <td>{{ permission.name }}</td>
+                                            <!-- <td>{{ permission.description }}</td> -->
+                                            <td id="no-print" >
+                                                 <!-- log history  -->
+                       <span data-toggle="modal" title="{% trans %}Log history{% endtrans %}" 
+                                  data-target="#showLogHistoryModal" id="showLog{{permission.id}}" type="button"  class="btn  btn-xs btn-default" >
+                                <i class="glyphicon glyphicon-lock "></i>
+                            </span>
+
+                            <div class="modal fade" id="showLogHistoryModal"
+                                 role="dialog" aria-labelledby="showUserInfoModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 80%; " role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <strong class="modal-title" >{% trans %}Log History{% endtrans %}</strong>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="showUserInfoModalContent">
+                                        </div>
+                                        <div class="modal-body" id="showLogModalContent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <script>
+                                $("#showLog{{permission.id}}").click(function () {
+                                    $.ajax({
+                                        url: "{{ path('ocaua_entity_log', {'selectedBundle':'OSTUA','selectedEntity':'Permission', 'id': permission.id }) }}",
+                                        success: function (result) {
+                                            $("#showLogModalContent").html(result);
+                                            $("#showLogModalContent").notify("Succesfully Loaded!", {
+                                                position: "top",
+                                                className: "success"
+                                            });
+                                        }, error: function (xhr, status, error) {
+                                            $("#showUserInfoModalContent").notify(xhr.responseText, {
+                                                position: "top",
+                                                className: "error"
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+
+<!-- endlog history -->
+                                                {#{% if is_granted('VIEW_PERMISSION', permission) %}#}
+                                                           <span title="Show" class="btn  btn-xs" data-toggle="modal" data-target="#showAssetgroupModal" id="showPermissionDetail{{permission.id}}">
+                <i class="glyphicon glyphicon-eye-open"></i>
+            </span>
+
+                                                        {#{% endif %}#}
+                                                {#{% if is_granted('EDIT_PERMISSION', permission) %}#} 
+
+
+ <span title="Edit" class="btn  btn-xs" id="editAssetgroupDetail{{permission.id}}">
+                                        <i class="ace-icon fa fa-edit"></i>
+                                    </span>
+
+  
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#editAssetgroupDetail{{permission.id}}").click(function () {
+                                                $.ajax({
+                                                    url: "{{ path('permission_edit', {'id':permission.id}) }}",
+                                                    success: function (result) {
+                                                        $("#formside_permission").html(result);
+
+                                                    }, error: function (xhr, status, error) {
+                                                        $("#formside_permission").html("Problem");
+
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#showPermissionDetail{{permission.id}}").click(function () {
+                                                $.ajax({
+                                                    url: "{{ path('permission_show', {'id':permission.id}) }}",
+                                                    success: function (result) {
+                                                        $("#showAssetgroupContent").html(result);
+
+                                                    }, error: function (xhr, status, error) {
+                                                        $("#showAssetgroupContent").html("Problem");
+
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+
+
+
+                                                        {#{% endif %}#}
+                                                    </div><!-- /btn-group -->
+                                                </div><!-- /input-group -->
+                                            </td>
+                                        </tr>
+                                        {% set counter=counter+1 %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% endblock   %}
+   
+{% block table_footer %}
+     <div class="row well  well-sm small ">
+<div class="col-md-1 col-sm-1 co2-xs-12">
+  
+    </div>
+<div class="col-md-4 col-sm-4 col-xs-12 ">
+<h5  style="padding-top: 0px;"> {% trans %}Total Permission   Count{% endtrans %}: {{ permissions.getTotalItemCount }}
+</h5>
+</div>
+<div class="col-md-7 col-sm-7 col-xs-12">  {{ knp_pagination_render(permissions) }}
+</div>
+    </div>
+     {% endblock   %}
+
+  </div>
+                         
+{% endblock %}

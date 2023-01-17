@@ -1,0 +1,145 @@
+ 
+ {% block body %}
+ 
+    <script type="text/javascript">
+        var translations = {
+            // ...
+            'Setting' : {{ 'Setting' | trans }},
+            // ...
+        }
+    </script>
+ 
+<div class="row panel"  >
+    <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+
+                    <h4>{% trans %}Office{% endtrans %}:
+                     <b class="green">
+                    {{ office.name }}</b> </h4>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                    
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="temperature"><b> {% trans %}Created At{% endtrans %}:</b> 
+        {% if office.createdat %}{{ office.createdat|date('Y-m-d H:i:s') }}{% endif %} 
+                          <span>  </span>
+                           
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="temperature"><b> {% trans %}Updated At{% endtrans %}:</b> 
+        {% if office.updatedat %}{{ office.updatedat|date('Y-m-d H:i:s') }}{% endif %} 
+                          <span>  </span>
+                           
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+        <div class="row weather-days">
+                     
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="daily-weather">
+ <i class="green pull-right ">
+                    <span title="{% trans %}Show{% endtrans %}" class="btn  btn-xs"
+                          data-toggle="modal" data-target="#CreateTranslation" id="OfficeDescriptionTranslation">
+                        <i class="glyphicon glyphicon-duplicate"></i>
+                    </span>
+                </i>
+
+                <script>
+                    $(document).ready(function () {
+                        $("#OfficeDescriptionTranslation").click(function (event) {
+                    {#                            document.getElementById("TranslationFieldContent").innerHTML = "<p><h2 class='badge badge-info'>Description : </h2> {{office.description}}</p>";#}
+                            document.getElementById("TranslationForm").action = "{{path('covid19_entity_translation', {'selectedBundle':'Covid19', 'selectedEntity': 'Office', 'id': office.id, 'locale': 'or', 'field': 'description'})}}";
+                            event.preventDefault();
+                        });
+                    });
+                </script>
+         <h2 class="day"> <b>{% trans %}Description{% endtrans %} </b>
+                          </h2>
+
+                          <span>{{ office.description|raw }}</span>
+                          <canvas height="32" width="32" id="rain"></canvas>
+                          
+                        </div>
+                      </div> 
+ <div class="clearfix"></div>
+                    </div>
+                     <div class="row weather-days">
+                       
+  <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="daily-weather">
+                          <h2 class="day"><b> {% trans %}Created By{% endtrans %}</b></h2>
+                          <span class="text-center">
+                          <span>{{ office.createdBy|raw }}</span>
+ 
+                          <canvas height="32" width="32" id="rain"></canvas>
+                          
+                        </div>
+                      </div>
+
+                     
+     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="daily-weather">
+    <i class="green pull-right ">
+                    <span title="{% trans %}Show{% endtrans %}" class="btn  btn-xs"
+                          data-toggle="modal" data-target="#CreateTranslation" id="OfficeNameTranslation">
+                        <i class="glyphicon glyphicon-duplicate"></i>
+                    </span>
+                </i>
+
+                <script>
+                    $(document).ready(function () {
+                        $("#OfficeNameTranslation").click(function (event) {
+                    {#                            document.getElementById("TranslationFieldContent").innerHTML = "<p><h2 class='badge badge-info'>Name:</h2> {{office.name}} </p>";#}
+                            document.getElementById("TranslationForm").action = "{{path('covid19_entity_translation', {'selectedBundle':'Covid19', 'selectedEntity': 'Office', 'id': office.id, 'locale': 'or', 'field': 'name'})}}";
+                            event.preventDefault();
+                        });
+                    });
+                </script>   
+              <h2 class="day"><b> {% trans %}Name{% endtrans %}</b></h2>
+                          <span>{{ office.name|raw }}</span>
+                          <canvas height="32" width="32" id="rain"></canvas>
+                          
+                        </div>
+                      </div>  
+
+
+
+
+
+                      <!-- </div> -->
+                        <!-- <div class="row weather-days"> -->
+                     
+                    
+              
+                 
+<div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+
+<div class="pricing_footer">
+    <table>
+        <tr>
+              <td style="padding: 2px">
+                    {{ form_start(delete_form) }} 
+                     <button  onclick="return confirm('Are you sure you want to Remove?');"class="btn btn-danger btn-responsive" type="submit" value="Delete"> <i class="fa fa-trash"> </i>{% trans %}Delete{% endtrans %}</button>
+                     <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
+                    {{ form_end(delete_form) }}
+               </td>
+        </tr>
+    </table>
+
+</div>
+              </div>
+</div>
+
+{% include 'includes/translation_form.html.twig' %}
+{% endblock %}

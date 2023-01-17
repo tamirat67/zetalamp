@@ -1,0 +1,399 @@
+<html>
+<head>
+<style>
+
+/** Define the header rules **/
+header {
+position: fixed;
+top: 0cm;
+left: 0cm;
+right: 0cm;
+height: 5cm;
+}
+/** Define the footer rules **/
+footer {
+position: fixed;
+bottom: 0cm;
+left: 0cm;
+right: 0cm;
+height: 3cm;
+}
+
+hr
+ {
+ background-color: red;
+ width: 90%;
+ margin-left: auto;
+ margin-right: auto;
+  }
+  
+  @page {
+margin: 30cm 30cm;
+}
+/** Define now the real margins of every page in the PDF **/
+body {
+margin-top: 3cm;
+margin-left: 2cm;
+margin-right: 2cm;
+margin-bottom: 2cm;
+}
+ #center 
+ { margin-left: 5px; margin-right: 10px; }
+ .title {
+ text-align: center;
+ }
+ 
+ 
+</style>
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 400px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: center;
+  display: table;
+  clear: both;
+}
+
+.row{
+  display:flex;
+}
+.row>div{
+  padding:15px;
+}
+.text{
+  width:66.6666%
+}
+.image{
+  width:33.333%
+}
+.container .row:nth-child(2n+1){
+  flex-direction:row-reverse
+}
+</style>
+
+<style>
+.vl {
+  border-left: 3px solid black;
+  height: 20px;
+  margin-top: 5px;
+}
+</style>
+<style>
+
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="row" style="text-align: left; <html>
+<head>
+  <meta charset="utf-8" />
+<style>
+
+/** Define the header rules **/
+header {
+position: fixed;
+top: 0cm;
+left: 0cm;
+right: 0cm;
+height: 3cm;
+}
+/** Define the footer rules **/
+footer {
+position: fixed;
+bottom: 0cm;
+left: 0cm;
+right: 0cm;
+height: 3cm;
+}
+
+hr
+ {
+ background-color: red;
+ width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+  }
+  
+  @page {
+margin: 30cm 30cm;
+}
+/** Define now the real margins of every page in the PDF **/
+body {
+margin-top: 3cm;
+margin-left: 2cm;
+margin-right: 2cm;
+margin-bottom: 2cm;
+}
+ #center 
+ { margin-left: 5px; margin-right: 10px; }
+ .title {
+ text-align: center;
+ }
+ 
+ 
+</style>
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 400px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: center;
+  display: table;
+  clear: both;
+}
+
+.row{
+  display:flex;
+}
+.row>div{
+  padding:15px;
+}
+.text{
+  width:66.6666%
+}
+.image{
+  width:33.333%
+}
+.container .row:nth-child(2n+1){
+  flex-direction:row-reverse
+}
+</style>
+
+<style>
+.vl {
+  border-left: 3px solid black;
+  height: 20px;
+  margin-top: 5px;
+}
+</style>
+<style>
+
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.float-container {
+    padding: 5px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+
+
+
+}  
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="float-container">
+
+  <div class="float-child" style="text-align: center; padding-bottom: ">
+     <img style="width:100px; height: 100px;" src="{{ asset('/var/www/html/zeta-lamp/web/image/con3.png') }}"/>
+  </div>
+  
+  <div class="float-child">
+   <h3><b>ዜታ ኮንስትራክሽን ኃየተየግ ማህበር</br>
+     ZETA CONSTRUCTION P.L.C</b></h3>
+  </div>
+  </br></br></br></br>  </br></br></br></br>
+  
+</div>
+
+</header>
+
+</br></br></br></br>
+<hr width="800px;" color="red" size="6">
+
+<footer>
+
+ <hr width="800px;" color="black"
+        size="5">
+ <div class="row" style="text-align: center">
+   <div class="column">
+TEL. +25111 662 79 15</br>
+     +25111 662 12 69
+
+     </div> 
+       <div class="column">
+
+       FAX +25111 11 663 10 76
+       P.O.BOX 12990.4042 ADDIS ABABA ETHIOPIA
+       EMAIL: zetaconstruct@gmail.com
+
+</div>
+</footer>
+
+<main>
+</br></br></br>
+  <!-- Id: {{ letter.id }} -->
+ <div class="row" style="text-align: left; margin-left: 80%;">
+ ቀን :-
+     {% if letter.date %}{{ letter.date|date('Y-m-d') }}{% endif %} </br>
+ ቁጥር :- {{ letter.refnumber }}</br>
+ </div>
+</br></br>
+ <div style="text-align: left; margin-left: 0%;">
+       <b>ለ:</b>
+       {{ letter.organizationnames }}</br>
+       
+       <u><b>አድስ አበባ</b></u>
+ 
+</div>
+  </br></br>
+  <div style="text-align: left;">
+       <b>ጉዳዩ:</b>
+       <u>{{ letter.subject }}</u>
+ 
+</div>
+ </br> 
+<div>
+  
+ {{ letter.letterbody }}</br>
+                  
+                  </div>
+                  </br>
+                                    </br>
+                  
+ <div style="text-align: right">
+    ከስላምታ ጋር
+ </div>
+ 
+                    
+        </br> </br>  </br>  </br></br></br></br> </br> </br>  </br>  </br></br></br></br>  
+        </br> </br>  </br>  </br></br></br></br> </br> </br>  </br>  </br></br></br></br>                                                
+  <div style="text-align: center">
+                        <img style="height: 36px" src="data:image/png;base64,'{{ code }}'" />
+                        </div> 
+                        
+              	
+       </div>          
+
+
+                 
+
+		
+</main>
+</body>
+</html>margin-left: 10%;">
+     <img style="width:100px; height: 100px;" src="{{ asset('/var/www/html/zeta-lamp/web/image/con3.png') }}"/>
+
+
+ <div style="text-align: center">
+    
+    ዜታ ኮንስትራክሽን ኃየተየግ ማህበር
+     ZETA CONSTRUCTION P.L.C
+     </div>
+
+
+ <hr width="800px;" color="red"
+        size="5">
+
+
+</header>
+</br></br></br></br>
+<footer>
+
+ <hr width="800px;" color="black"
+        size="5">
+ <div class="row" style="text-align: center">
+   <div class="column">
+TEL. +25111 662 79 15</br>
+     +25111 662 12 69
+
+     </div> 
+       <div class="column">
+
+       FAX +25111 11 663 10 76
+       P.O.BOX 12990.4042 ADDIS ABABA ETHIOPIA
+       EMAIL: zetaconstruct@gmail.com
+
+</div>
+</footer>
+
+<main>
+</br></br></br>
+  <!-- Id: {{ letter.id }} -->
+ <div class="row" style="text-align: left; margin-left: 60%;">
+ Date:
+     {% if letter.date %}{{ letter.date|date('Y-m-d') }}{% endif %} </br>
+ Ref Number: {{ letter.refnumber }}</br>
+ </div>
+</br></br>
+ <div style="text-align: left; margin-left: 0%;">
+       <b>ለ:</b>
+       {{ letter.organizationnames }}</br>
+       
+       <u><b>አድስ አበባ</b></u>
+ 
+</div>
+  </br></br>
+  <div style="text-align: left;">
+       <b>ጉዳዩ:</b>
+       <u>{{ letter.subject }}</u>
+ 
+</div>
+ </br> 
+<div>
+  
+ Letter Body: {{ letter.letterbody }}</br>
+                  
+                  </div>
+                  </br>
+                                    </br>
+                  
+ <div style="text-align: right">
+ Your sincerely
+ </div>
+ 
+                    </br> 
+                    </br> </br>                 
+  <div style="text-align: center">
+                        <img style="height: 36px" src="data:image/png;base64,'{{ code }}'" />
+                        </div> 
+                        
+              	
+       </div>          
+
+
+                 
+
+		
+</main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#parameters:
+#    interactive_login_listener.class:
+#      Ethio\Covid19Bundle\Listener\LoginListener
+
+services:
+    Ethio\Covid19Bundle.SystemUserStatistics:
+        class:        Ethio\Covid19Bundle\Service\SystemUserStatistics
+        arguments:    ["@doctrine.orm.entity_manager", "@service_container"]
+    Ethio\Covid19Bundle.kaffaltiiGalmeessi:
+        class:        Ethio\Covid19Bundle\Service\KaffaltiiGalmeessiLoader
+        arguments:    ["@doctrine.orm.entity_manager"]
+    Ethio\Covid19Bundle.transaction:
+        class:        Ethio\Covid19Bundle\Service\TransactionLoader
+        arguments:    ["@doctrine.orm.entity_manager"]
+

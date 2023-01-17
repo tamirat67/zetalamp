@@ -1,0 +1,340 @@
+{% extends 'home_page.html.twig' %}
+
+{% block menu %}
+    <i class="fa fa-angle-double-right" > </i> 
+    <a   href="#">   {% trans %}User Management{% endtrans %} </i></a>
+    {% endblock %}
+
+{% block submenu %}
+    <i class="fa fa-angle-double-right" > </i> 
+    <a   href="{{ path('group_index') }}">   {% trans %}Group{% endtrans %}  </i></a> 
+    {% endblock %}
+
+
+{% block title %}
+    {% trans %}Group list{% endtrans %}
+{% endblock %} 
+{% block body %}
+
+                
+    <div class="modal fade" id="showUserInfoModal" 
+         role="dialog" aria-labelledby="showUserInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 40%; " role="document">
+            <div class="modal-content"> <div class="modal-header">
+                    <strong class="modal-title" >
+
+                        {% block modaltitle %}
+                            <div class="pricing"></div>
+                            <div class="title">
+                                {% trans %}Group{% endtrans %} </div> 
+
+                        {% endblock %}
+                    </strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="showUserInfoModalContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+ {% block flash_message %}
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('success') %}
+                                                <div id="success-alert" class="alert alert-success alert-dismissible show"
+                                                     role="alert">
+                                                    <strong>Success!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+                                            {% for message in app.flashes('warning') %}
+                                                <div class="alert alert-warning alert-dismissible show" role="alert">
+                                                    <strong>Warning!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('error') %}
+                                                <div class="alert alert-error alert-dismissible show" role="alert">
+                                                    <strong>Error!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+
+                                            {# pass a string argument to get only the messages of that type #}
+                                            {% for message in app.flashes('notice') %}
+                                                <div class="alert alert-error alert-dismissible show" role="alert">
+                                                    <strong>Error!</strong>
+                                                    {{ message }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+
+                                        {% endblock %}
+
+
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        <section class="panel" id="showGroupModalContent">
+            {% block sidebartitle %}
+                <h3 class="green"><i class="fa fa-plus"></i> {% trans %}New{% endtrans %}</h3>
+            {% endblock %}
+            {{ form_start(form, {'action': path('group_new')}) }}
+            {{ form_label(form.name)}}
+            {{ form_widget(form.name,{'attr':{'class':'form-control','placeholder':'    name'}})}}
+            {{ form_errors(form.name)}} 
+            <br>
+            {{ form_label(form.permissions)}}
+            {{ form_widget(form.permissions,{'attr':{'class':'form-control','placeholder':'Permissions'}})}}
+            {{ form_errors(form.permissions)}} 
+            <br>
+            <!-- modal  -->
+            <div   id="showDescriptionModal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="showDescriptionContent">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span title="{% trans %}ShowDescription{% endtrans %}" class="btn  btn-sm btn-success btn-block" data-toggle="modal" data-target="#showDescriptionModal" id="showDescriptionDetail">
+                <i class="glyphicon"> {% trans %}Description{% endtrans %}</i>
+            </span>
+            <br>
+
+
+            <input type="submit" class="btn btn-sm btn-primary btn-block " value="{% trans %}Create{% endtrans %}" /> 
+
+            {{ form_end(form) }}
+
+        </section>
+    </div>
+
+    <!-- /muke -->
+
+
+
+    <div class="col-md-9">
+
+
+        <!-- filter form here -->
+        {% block filter %}
+            <div class="x_panel" style="height: auto;">
+                <div class="x_title">
+
+                    <small> {% trans %}Filter{% endtrans %}</small> 
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link" title="Filter"><i class="fa fa-chevron-down"></i></a>
+                        </li>
+                        <li><a class="close-link" title="Close filter"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" style="display: none;">
+                    <!-- filter content -->
+
+                    <form method="get" action="." class="well well-sm small" >
+
+                        <div class="col-md-2 col-sm-2 co-xs-12">
+                            {{ form_widget(formFilter.name ,{'attr':{'class':'form-control','placeholder':'Name'}})}}
+                        </div>  
+                        <div class="ccol-md-1 col-sm-1 co-xs-12">
+                            <input type="submit" class="btn btn-sm btn-primary pull-right" name="submit-filter" value="{% trans %}Filter{% endtrans %}" /> 
+                        </div>
+                        <!-- end filter content -->  
+
+                    </form>       
+                </div>    
+            </div> 
+        {% endblock %}
+        
+
+                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                 {% for group in groups %}
+
+                       
+                                 
+                      <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree{{ group.id }}" aria-expanded="false" aria-controls="collapseThree{{ group.id }}">
+                          <h4 class="panel-title"> {{ group.name }} 
+                          </h4>
+                       
+                        </a>
+                           <span class="pull-right" style="margin-top:  -28px; "> 
+
+
+
+ <!-- log history  -->
+                       <span data-toggle="modal" title="{% trans %}Log history{% endtrans %}" 
+                                  data-target="#showLogHistoryModal" id="showLog{{group.id}}" type="button"  class="btn  btn-xs btn-default" >
+                                <i class="glyphicon glyphicon-lock "></i>
+                            </span>
+
+                            <div class="modal fade" id="showLogHistoryModal"
+                                 role="dialog" aria-labelledby="showUserInfoModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 80%; " role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <strong class="modal-title" >{% trans %}Log History{% endtrans %}</strong>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="showUserInfoModalContent">
+                                        </div>
+                                        <div class="modal-body" id="showLogModalContent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <script>
+                                $("#showLog{{group.id}}").click(function () {
+                                    $.ajax({
+                                        url: "{{ path('ocaua_entity_log', {'selectedBundle':'OSTUA','selectedEntity':'Group', 'id': group.id }) }}",
+                                        success: function (result) {
+                                            $("#showLogModalContent").html(result);
+                                            $("#showLogModalContent").notify("Succesfully Loaded!", {
+                                                position: "top",
+                                                className: "success"
+                                            });
+                                        }, error: function (xhr, status, error) {
+                                            $("#showUserInfoModalContent").notify(xhr.responseText, {
+                                                position: "top",
+                                                className: "error"
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+
+<!-- endlog history -->
+
+ 
+                                    <!--   -->
+
+
+                                    <span title="Edit" class="btn  btn-xs" id="editDetail{{group.id}}">
+                                        <i class="ace-icon fa fa-edit "></i>
+                                    </span>
+
+                                    <span title="Show" class="btn  btn-xs" data-toggle="modal" data-target="#showUserInfoModal" id="showManufacturerDetail{{group.id}}">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </span>
+
+
+
+
+                                    <script >
+                                        $(document).ready(function () {
+                                            $("#editDetail{{group.id}}").click(function () {
+                                                $.ajax({
+                                                    url: "{{ path('group_edit', {'id':group.id}) }}",
+                                                    success: function (result) {
+                                                        $("#showGroupModalContent").html(result);
+
+                                                    }, error: function (xhr, status, error) {
+                                                        $("#showGroupModalContent").html("Problem");
+
+                                                    }
+                                                });
+                                            });
+                                        });
+
+                                    </script>
+
+
+                                    <script >
+                                        $(document).ready(function () {
+                                            $("#showManufacturerDetail{{group.id}}").click(function () {
+                                                $.ajax({
+                                                    url: "{{ path('group_show', {'id':group.id}) }}",
+                                                    success: function (result) {
+                                                        $("#showUserInfoModalContent").html(result);
+
+                                                    }, error: function (xhr, status, error) {
+                                                        $("#showUserInfoModalContent").html("Problem");
+
+                                                    }
+                                                });
+                                            });
+                                        });
+
+                                    </script>
+                           </span>
+                <div id="collapseThree{{ group.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="height: 0px;">
+                          <div class="panel-body"> 
+                            <strong> {% trans %}Group{% endtrans %} {% trans %}Name{% endtrans %}</strong> :
+{{ group.name }}
+<br>
+<strong> {% trans %}Description{% endtrans %}</strong> :
+{{ group.description }}<br>
+<strong> {% trans %}Group{% endtrans %} {% trans %}Permissions{% endtrans %}</strong>: 
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{% trans %}Role Name{% endtrans %}</th>
+                            <th>{% trans %}Description{% endtrans %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set counter=1 %}
+                        {% for permission in group.permissions %}
+                            <tr class="active">
+                                <td>{{ counter }}</td>
+                                <td>{{ permission.name }}</td>
+                                <td>{{ permission.description }}</td>
+                            </tr>
+                            {% set counter=counter+1 %}
+                        {% endfor %}
+                       
+                    </tbody>
+                </table> 
+ </div>
+</div>
+</div>
+
+                        {% endfor %}
+
+{% block table_footer %}
+                <div class="row well  well-sm small ">
+                    <div class="col-md-1 col-sm-1 co2-xs-12">
+
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <h5  style="padding-top: 0px;"> {% trans %}Total Group   Count{% endtrans %}: {{ groups.getTotalItemCount }}
+                        </h5>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">  {{ knp_pagination_render(groups) }}
+                    </div>
+                </div>
+            {% endblock   %}
+
+                  </div></div>   
+
+                                  
+                           
+
+{% endblock  %}

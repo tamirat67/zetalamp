@@ -1,0 +1,201 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@Covid19Bundle/Resources/config/services.yml" }
+    - { resource: "@OSTUABundle/Resources/config/services.yml" }
+    - { resource: doctrine_extensions.yml }
+    #- { resource: "@AppBundle/Resources/config/services.yml" }
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    gaamoo_directory: '%kernel.project_dir%/../web/uploads/gaamoo/documents'
+    daandii_directory: '%kernel.project_dir%/../web/uploads/daandii/documents'
+    bishaanii_directory: '%kernel.project_dir%/../web/uploads/bishaanii/documents'
+    miseensota_directory: '%kernel.project_dir%/../web/uploads/miseensota/documents'
+    image_directory: '%kernel.project_dir%/web/uploads/images'
+    brochures_directory: '%kernel.project_dir%/../web/uploads/brochures'
+    brochure_files_directory: '%kernel.project_dir%/../web/uploads/brochures'
+framework:
+    translator: { fallbacks: ['%locale%'] }
+    default_locale: en_US
+    router:
+       resource: "%kernel.root_dir%/config/routing.yml"
+    secret: '%secret%'
+#    router:
+#        resource: '%kernel.project_dir%/app/config/routing.yml'
+#        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    #validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig', 'php']
+
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        #- form_div_layout.html.twig
+        - 'bootstrap_3_layout.html.twig' 
+
+    # The default format options used by the date filter
+    date:
+        format:               'F j, Y H:i'
+        interval_format:      '%d days'
+
+        # The timezone used when formatting dates, when set to null, the timezone returned by date_default_timezone_get() is used
+        timezone:             null
+
+    # The default format options for the number_format filter
+    number_format:
+        decimals:             0
+        decimal_point:        .
+        thousands_separator:  ','
+    
+    
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+#            loggable:
+#                type: annotation
+#                prefix: Gedmo\Loggable\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+#                alias: GedmoLoggable # (optional) it will default to the name set for the mapping
+#                is_bundle: false
+            loggable:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Loggable\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+#
+            blameable:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Blameable\Traits
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Blameable/Traits"
+
+            gedmo_translatable:
+               type: annotation
+               prefix: Gedmo\Translatable\Entity
+               dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+               alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
+               is_bundle: false
+            gedmo_translator:
+              type: annotation
+              prefix: Gedmo\Translator\Entity
+              dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+              alias: GedmoTranslator # (optional) it will default to the name set for the mapping
+              is_bundle: false
+
+
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+stof_doctrine_extensions:
+    default_locale: en
+    orm:
+        default:
+            loggable: true
+            sluggable: true            
+            timestampable: true
+            blameable: true
+            translatable: true
+# app/config/config.yml
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: OST\UABundle\Entity\User
+    group:
+        group_class: OST\UABundle\Entity\Group
+    from_email:
+        address: "tamirattanga@gmail.com"
+        sender_name: "Tamirat"
+    resetting:
+        email:
+            from_email:
+                address:        tamirattanga@gmail.com
+                sender_name:    Tamirat
+    registration:
+            confirmation:
+                template:   '@FOSUser/Registration/email.txt.twig'
+    # service:
+    #     mailer: app.custom_fos_user_mailer
+    
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltopdf-amd64
+        options:    []
+#                    - { name: 'viewport-size', value: ‘1024x768’ }
+#                    - { name: 'page-size', value: 'A2' }
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage-amd64
+        options:    []
+
+lexik_translation:
+    fallback_locale: [en]         # (required) default locale(s) to use
+    managed_locales: [en, or, am] # (required) locales that the bundle has to manage
+    base_layout: "LexikTranslationBundle::layout.html.twig"
+    grid_input_type: text       # text|textarea
+    grid_toggle_similar: false
+    exporter:
+        use_yml_tree: false
+        json_hierarchical_format: false
+    resources_registration:
+        type:                 all  # all | files | database
+        managed_locales_only: true
+    auto_cache_clean: false
+    auto_cache_clean_interval: 600  # number of seconds to wait before trying to check if translations have changed in the database.
+
+cmen_google_charts:
+    version: "current"
+# app/config/config.yml
+lexik_form_filter:
+    listeners:
+        doctrine_orm: true
+        doctrine_dbal: false
+        doctrine_mongodb: false
+    force_case_insensitivity: false
+    encoding: ~ # Encoding for case insensitive LIKE comparisons. For example: UTF-8
+    where_method: ~  # null | and | or
+    condition_pattern: text.starts # Available values for this option are: text.contains, text.starts, text.ends, text.equal.
+

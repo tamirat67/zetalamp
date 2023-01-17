@@ -1,0 +1,17 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+    <h2>{% trans %}Edit{% endtrans %}</h2>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="{% trans %}Update{% endtrans %}"   class="btn  btn-xs btn-primary" />
+    {{ form_end(edit_form) }}
+
+       <a href="{{ path('aboutus_index') }}"   class="btn  btn-xs btn-primary">{% trans %}Back{% endtrans %}</a>
+         
+            {{ form_start(delete_form) }}
+                <input type="submit" value="{% trans %}Delete{% endtrans %}"   class="btn  btn-xs btn-primary">
+            {{ form_end(delete_form) }}
+         
+{% endblock %}

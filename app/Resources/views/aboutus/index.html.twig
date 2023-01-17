@@ -1,0 +1,26 @@
+ 
+{% for aboutUs in aboutuses %}
+<div class="services color-6">
+    <span class="icon2"><i class="glyphicon glyphicon-menu-down"></i></span>
+    <h3>{% trans %}Mission{% endtrans %}</h3>
+{{ aboutUs.Mission|raw }}
+</div>
+<div class="services color-6">
+    <span class="icon2"><i class="glyphicon glyphicon-menu-down"></i></span>
+    <h3>Vision</h3>
+    {{ aboutUs.Vision|raw }} 
+</div>
+<div class="services color-6">
+    <span class="icon2"><i class="glyphicon glyphicon-menu-down"></i></span>
+    <h3>{% trans %}Strategic Themes{% endtrans %}</h3>
+{{ aboutUs.Strategicthemes }}
+</div>
+<div class="services color-6">
+    <span class="icon2"><i class="glyphicon glyphicon-menu-down"></i></span>
+    <h3>{% trans %}Core Values{% endtrans %}</h3>
+{{ aboutUs.CoreValues }}
+</div>
+  
+{% endfor %}  
+
+    

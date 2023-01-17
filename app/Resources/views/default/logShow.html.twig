@@ -1,0 +1,50 @@
+
+{% block application_simple_title %}
+    <strong>{% trans %}Record Log{% endtrans %}</strong>
+
+{% endblock %}
+
+{% block body %}
+   
+    <table class="table table-striped jambo_table bulk_action small">
+        <thead>
+        <tr nowrap="nowrap">
+            <th>{% trans %}Action{% endtrans %}</th>
+            <th nowrap="nowrap">{% trans %}Logged At{% endtrans %}</th>
+            <th nowrap="nowrap">{% trans %}Object Id{% endtrans %}</th>
+            <th nowrap="nowrap">{% trans %}Object Class{% endtrans %}</th>
+            <th>{% trans %}Version{% endtrans %}</th>
+            <th>{% trans %}Data{% endtrans %}</th>
+            <th>{% trans %}Username{% endtrans %}</th>
+            <th>{% trans %}Id{% endtrans %}</th>
+            {#<th>Actions</th>#}
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in logs %}
+            {#{% for entity in entity1 %}#}
+            <tr>
+                <td><a href="#">{{ entity.action }}</a></td>
+                <td>{% if entity.loggedAt %}{{ entity.loggedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.objectId }}</td>
+                <td>{{ entity.objectClass }}</td>
+                <td>{{ entity.version }}</td>
+                <td>
+                    {% for key, value in entity.data %}
+                        {{ key }} :
+                        {% if value.timestamp is defined %}
+                            {{ value|date('m/d/Y') }}
+                        {% elseif value is not null %}
+                            {{ dump(value)}}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.id }}</td>
+            </tr>
+        {% endfor %}
+        {#{% endfor %}#}
+        </tbody>
+    </table>
+
+{% endblock %}

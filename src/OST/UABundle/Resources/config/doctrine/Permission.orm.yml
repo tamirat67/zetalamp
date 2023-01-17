@@ -1,0 +1,54 @@
+OST\UABundle\Entity\Permission:
+  type: entity
+  table: permission
+  gedmo:
+    loggable: true
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255
+      nullable: false
+      gedmo:
+        versioned: true
+    description:
+      type: text
+      nullable: true
+    created_at:
+      type: date
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  manyToOne:
+    createdBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        blameable:
+          on: create
+    updatedBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        blameable:
+          on: update
+  manyToMany:
+    groups:
+      targetEntity: Group
+      mappedBy: permissions

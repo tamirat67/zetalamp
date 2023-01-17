@@ -1,0 +1,48 @@
+Ethio\Covid19Bundle\Entity\VisitorLog:
+  type: entity
+  table: visitor_log
+  repositoryClass: Ethio\Covid19Bundle\Repository\VisitorLogRepository
+  gedmo:
+    loggable: true     
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+
+  fields:
+    host_ip:
+      type: string
+      length: 255
+      nullable: true      
+      gedmo:
+        versioned: true              
+        
+    visitor_username:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true              
+        
+    description:
+      type: string
+      length: 255
+      nullable: true
+      gedmo:
+        versioned: true              
+        
+    created_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        versioned: true              
+        
+    updated_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        versioned: true              
+
+  lifecycleCallbacks:
+    prePersist: [ setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]

@@ -1,0 +1,19 @@
+
+        <table class="table table-bordered table-condensed table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Host Ip</th>
+                    <th> Login Date</th>
+                </tr>
+            {% for visitor_log in visitor_logs %}
+                <div>
+                <tr>
+                    <td>{{visitor_log.hostip}}</td>
+                    {#<td>{{visitor_log.updatedat}}</td>#}
+                    <td> {{ visitor_log.updatedat|date('Y-m-d H:i:s') }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+

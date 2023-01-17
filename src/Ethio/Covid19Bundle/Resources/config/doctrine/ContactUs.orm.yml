@@ -1,0 +1,91 @@
+Ethio\Covid19Bundle\Entity\ContactUs:
+  type: entity
+  table: contact_us
+  repositoryClass: Ethio\Covid19Bundle\Repository\ContactUsRepository
+  gedmo:
+    loggable: true
+#    translation:
+#      locale: localeField       
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    email:
+      type: string
+      length: 255
+      gedmo:
+        versioned: true
+       
+    subject:
+      type: text
+      length: 255
+      gedmo:
+        versioned: true
+        translatable: true
+
+    message:
+      type: text
+      nullable: false
+      gedmo:
+        versioned: true
+        translatable: true
+        
+    type_of_message:
+      type: text
+      nullable: true
+      gedmo:
+        versioned: true
+        translatable: true
+        
+    status:
+      type: boolean
+      nullable: true
+      gedmo:
+        versioned: true
+    created_at:
+      type: date
+      nullable: true      
+      gedmo:
+        timestampable:
+          on: create
+          
+    updated_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+
+  manyToOne:
+    createdBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL" 
+
+      gedmo:
+        blameable:
+          on: create
+
+    updatedBy:
+      targetEntity: OST\UABundle\Entity\User
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL" 
+      gedmo:
+        blameable:
+          on: update
+    repliedTo:
+       targetEntity: ContactUs
+       joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL" 
+          
+#  manyToMany:
+#    TransactionRecords:
+#      targetEntity: TransactionRecord
+#      mappedBy: Assets

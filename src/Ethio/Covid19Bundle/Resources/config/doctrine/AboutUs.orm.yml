@@ -1,0 +1,39 @@
+Ethio\Covid19Bundle\Entity\AboutUs:
+  type: entity
+  table: aboutus
+  repositoryClass: Ethio\Covid19Bundle\Repository\AboutUsRepository
+  gedmo:
+    loggable: true
+#    translation:
+#      locale: localeField    
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    Mission:
+      type: text
+      length: 255 
+      gedmo:
+        versioned: true
+        translatable: true
+    Vision:
+      type: text
+      nullable: true
+      gedmo:
+        versioned: true
+        translatable: true
+    CoreValues:
+      type: text
+      nullable: true 
+      gedmo:
+        versioned: true
+        translatable: true
+
+    Strategicthemes:
+      type: text
+      nullable: true
+      gedmo:
+        versioned: true
+        translatable: true
+      

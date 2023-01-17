@@ -1,0 +1,48 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+    <h1>Organizationnames list</h1>
+
+  <table id="datatables-example" class="table table-bordered table-striped table-condensed" style="font-size:11px; background:darkgray">    
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for organizationName in organizationNames %}
+            <tr>
+                <td><a href="{{ path('organizationname_show', { 'id': organizationName.id }) }}">{{ organizationName.id }}</a></td>
+                <td>{{ organizationName.name }}</td>
+                <td>{{ organizationName.description }}</td>
+                <td>
+             <div class="input-group column col-sm-4 col-xs-4 sidebar-offcanvas">
+                                    <div class="input-group-btn" >
+                                        <a class="btn btn-sm btn-info" href="{{ path('organizationname_show', { 'id': organizationName.id }) }}">
+                                            <i class="ace-icon fa fa-eye-slash"></i>
+</a>
+
+                                        <a class="btn btn-sm btn-warning" href="{{ path('organizationname_edit', { 'id': organizationName.id }) }}">
+                                            <i class="ace-icon fa fa-pencil"></i>
+</a>
+
+                                 
+
+                                    </div>
+                                </div>  
+        
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('organizationname_new') }}">Create a new organizationName</a>
+        </li>
+    </ul>
+{% endblock %}

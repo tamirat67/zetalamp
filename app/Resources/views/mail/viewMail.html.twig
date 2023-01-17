@@ -1,0 +1,36 @@
+{% extends 'mailLayout.html.twig' %}
+
+{% block body2 %}
+    <div class="col-md-12 col-sm-12 col-xs-12 mail-right-tool">
+        <div class="col-md-12 col-sm-12 col-xs-12 ">
+            <h4><span>Subject:</span> <b>{% if Mail.repliedTo %} Re: {% endif %}{{ Mail.mailsubject }}</b></h4>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h5><span>From:</span> {{ Mail.mailfrom }}</h5>
+            <span class="pull-right">{% if Mail.maildategregorian %}{{ Mail.maildategregorian|date('Y-m-d H:i:s') }}{% endif %}</span>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 mail-right-content padding-0">
+        <div class="col-md-12 col-sm-12 col-xs-12 mail-right-text">
+            <p>
+                {{ Mail.mailbody|raw }}
+            </p>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12"><hr/></div>
+        <form class='form-inline' action='{{ path('mail_replay',{'id': Mail.id })}}' method='POST'>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {% if not Mail.isdraft %}
+            <textarea name="replayBody" placeholder="Type Your Message.." class="summernote col-md-12 col-sm-12 col-xs-12 ckeditor"></textarea>
+            {% endif %}
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                {% if Mail.isdraft %}
+                <input type="submit" name="send" value="Send" class="btn btn-danger pull-right"/>
+                {% else %}
+                <input type="submit" name="draft" value="Save As Draft" class="btn btn-primary pull-right"/>
+                <input type="submit" name="replay" value="Reply" class="btn btn-danger pull-right"/>
+                {% endif %}
+            </div>
+        </div>
+        </form>
+    </div>
+{% endblock %}

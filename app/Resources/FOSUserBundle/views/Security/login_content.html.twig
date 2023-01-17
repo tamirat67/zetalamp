@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="wrapper fadeInDown"  >
+    <div id="formContent">
+
+        <h2 class="active">{% trans %}Signin{% endtrans %}</h2>
+
+        <div >
+            <img  class="img-circle profile_img" src="{{ asset('images/newlogo.png') }}" id="icon"    />
+        </div>
+        <form action="{{ path('fos_user_security_check') }}" method="post">
+            
+            {% if csrf_token('authenticate') %}
+<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+{% endif %}
+            <input type="text"  name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" />
+
+            <input type="password" id="password"   name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"/>
+
+            <br>
+{# <div class="alert alert-danger">{{ error }} </div> #}
+
+            {% if error %}
+                <p class="h4 red">{{ error.messageKey|trans(error.messageData, 'security') }}<i class="fa fa-warning"></i> </p>
+            {% endif %}
+            <input type="checkbox"   name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label> 
+
+            <div class="row">
+                <div class="col-xs-10 col-sm-11 col-xs-11">
+
+                    <input type="submit"   class="btn btn-primary btn-block" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                </div>
+
+            </div>
+        </form>
+        <div id="formFooter"  >
+
+            <!--  
+             <a class="fadeIn first medium " href="#">
+               <h4 class="widget-title smaller"> Forgot Password?</h4></a>
+            --> 
+             </div>
+
+    </div>
+</div>
+
+
+
+

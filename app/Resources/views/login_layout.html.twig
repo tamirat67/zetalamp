@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta charset="utf-8" />
+        <title>Oromia Construction Authority</title>
+        <meta name="description" content="overview &amp; stats" />
+
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <!-- bootstrap & fontawesome -->
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/assets/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
+        <!--[if !IE]> -->
+        <script src="{{ asset('assets/assets/js/jquery-2.1.4.min.js')}}"></script>
+        <!-- page specific plugin styles -->
+        <!-- text fonts -->
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/fonts.googleapis.com.css')}}" />
+        <!-- ace styles -->
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/chosen.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+       <!--[if lte IE 9]>
+                <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+        <![endif]-->
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/ace-skins.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('assets/assets/css/ace-rtl.min.css')}}" />
+
+        {# table searchable#}
+        <script src="{{ asset('bundles/covid19/asset/js/plugins/jquery.datatables.min.js') }}"></script>
+        <script src="{{ asset('bundles/covid19/asset/js/plugins/datatables.bootstrap.min.js') }}"></script>
+        {#<script src="{{ asset('bundles/covid19/layout2/js/plugins/jquery.nicescroll.js') }}"></script>
+        <script src="{{ asset('bundles/covid19/layout2/js/main.js') }}"></script>#}
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatables-example').DataTable();
+            });
+        </script>
+        <!-- ace settings handler -->
+        <script src="{{ asset('assets/assets/assets/js/ace-extra.min.js')}}"></script>
+   <style> 
+            .circular--square {
+                border-radius: 50%;
+                border-top-left-radius: 50% 50%;
+                border-top-right-radius: 50% 50%;
+                border-bottom-right-radius: 50% 50%;
+                border-bottom-left-radius: 50% 50%;
+            }
+        </style>
+    </head>
+           <body class="no-skin">
+        {% block body_wrapper %}
+
+        <div id="navbar" class="navbar navbar-default ace-save-state">
+            <div class="navbar-container ace-save-state" id="navbar-container">
+                <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                    <span class="sr-only">Toggle sidebar</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                    <img class="circular--square pull-left" style="width: 40px; padding-top: 2px; margin-left: 35px" src="{{ asset('image/con3.png') }}" class="profile-pic"/>
+                </div>
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">
+                        <i class="fa fa-briefcase"></i> 
+                        <b class="text-red" style="color: white;"></b>{% trans %}Automated Construction{% endtrans %}
+                        <b class="text-red" style="color: red;">
+                        <b class="text-red"style="color: black;">-</b>{% trans %}Information{% endtrans %}</b>
+                        <b class="text-black" style="color: black;">-{% trans %}Management System{% endtrans %}</b>
+                    </a>
+                </div>
+                
+
+               
+ 
+
+                          
+
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- /.navbar-container -->
+        </div>
+ 
+                {% block content_wrapper %}
+                    <!-- Full Width Column -->
+                    <div class="content-wrapper">
+                        <div class="container" style="background: #fff;">
+                            <!-- Content Header (Page header) -->
+                            {#<section class="content-header text-navy" style="background:#e8f8f8;padding-bottom:4px;">
+                                <h1>
+                                    {% block content_header_one %}Jimma{% endblock %}
+                                    <small>{% block content_header_small %}Manucipality{% endblock %}</small>
+                                </h1>
+                              
+                            </section>#}
+
+                            <!-- Main content -->
+                            <section class="content">
+                            {% block body %}{% endblock %}
+                        {% block javascripts %}{% endblock %}
+
+                    </section>
+<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Tamirat</span>
+							MIN-Studio &copy; 2020-2021
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+					</div>
+				</div>
+			</div>
+
+
+                    <!-- /.content -->
+                </div>
+                <!-- /.container -->
+
+            </div>
+            <!-- /.content-wrapper -->
+        {% endblock content_wrapper %}
+       
+    </div>
+    <!-- ./wrapper -->
+{% endblock body_wrapper %}
+<!-- jQuery 3 -->
+<script src="{{ asset('bundles2/app/lte/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{ asset('bundles2/app/lte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('bundles2/app/lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{ asset('bundles2/app/lte/bower_components/fastclick/lib/fastclick.js')}}"></script>
+
+<script src="{{ asset('bundles2/app/lte/dist/js/adminlte.min.js')}}"></script>
+
+<script src="{{ asset('bundles2/app/lte/dist/js/demo.js')}}"></script>
+
+
+{% block style_sheet %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/lte/plugins/iCheck/square/blue.css')}}">
+{% endblock style_sheet %}
+
+{% block java_script %}
+    <script src="{{ asset('bundles/app/lte/plugins/iCheck/icheck.min.js')}}"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+            });
+        });
+    </script>
+{% endblock java_script %}
+</body>
+</html>
+

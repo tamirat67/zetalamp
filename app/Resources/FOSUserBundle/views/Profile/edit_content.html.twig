@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+        <div class="colorlib-narrow-content" id="Contactus">
+
+ <div class="panel panel-default">
+                <div class="panel-body  animate-box fadeInDown animated"  >
+                    <div class="row">
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+    <div>
+
+        <!-- <input class="btn btn-primary btn-sm" type="submit" value="{{ 'profile.edit.submit'|trans }}" /> -->
+        <input class="btn btn-primary btn-sm" type="submit" value="{% trans %}Update{% endtrans %}" />
+
+    </div>
+    </div>
+</div>
+</div>
+</div>
+{{ form_end(form) }}

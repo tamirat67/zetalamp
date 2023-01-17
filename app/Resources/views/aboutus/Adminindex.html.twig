@@ -1,0 +1,59 @@
+{% extends 'home_page.html.twig' %}
+{% block menu %}
+    <i class="fa fa-angle-double-right" > </i> 
+<a   href="#">   {% trans %}Setting{% endtrans %} </a>
+{% endblock %}
+
+{% block submenu %}
+       <i class="fa fa-angle-double-right" > </i> 
+ <a   href="{{ path('aboutus_admin_index') }}">  {% trans %}About Us{% endtrans %}  </a> 
+{% endblock %}
+  
+{% block body %}
+
+ <!-- modal  -->
+ 
+ 
+ 
+<!-- filter form here end  --> 
+                {% block list %}
+                    <table id="datatable_col_reorder" class="table table-striped jambo_table bulk_action">   
+      
+                                    <thead>
+                                    <tr class="header"  >
+                                        <th>#</th>
+                                        <th>{% trans %}Mission{% endtrans %}</th>
+                                        <th>{% trans %}Vision{% endtrans %}</th>
+                                        <th>{% trans %}Strategic Themes{% endtrans %}</th>
+                                        <th>{% trans %}CoreValues{% endtrans %}</th>
+                                        <!-- <th>Description</th> -->
+                                        <th class="input-group column col-sm-2 col-xs-1 sidebar-offcanvas">{% trans %}Action{% endtrans %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody> 
+{% for aboutUs in aboutuses %}
+
+                                        <tr class="active">
+                                            <td> {{ aboutUs.id }}</td>
+                                            <td> {{ aboutUs.Mission|raw }}</td>
+                                            <td>  {{ aboutUs.Vision|raw }} </td>
+                                            <td>
+{{ aboutUs.Strategicthemes|raw }} </td>
+                                            <td> 
+{{ aboutUs.CoreValues|raw }}</td>
+ <td>
+    <a  class="btn btn-success btn-xs"  href="{{ path('aboutus_edit', { 'id': aboutUs.id }) }}">edit</a>
+ 
+
+ 
+                                                    </td>
+                                        </tr>
+                                          {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% endblock   %}
+    
+
+  </div>
+                         
+{% endblock %}

@@ -1,0 +1,38 @@
+security:
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_SUPERVISOR]
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:    ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:
+                path: /logout
+                target: /login
+            anonymous: true
+            logout_on_user_change: true
+    access_denied_url: /document         
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/ocaua/aboutus/me, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/id/edit, role: ROLE_ADMIN }
+        - { path: ^/id/show, role: ROLE_ADMIN }
+        - { path: ^/*, role: ROLE_USER }
+        - { path: ^/*, role: ROLE_ADMIN }
+        - { path: ^/ocaua/aboutus, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+        OST\UABundle\Entity\User: plaintext

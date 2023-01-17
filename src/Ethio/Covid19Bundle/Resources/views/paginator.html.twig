@@ -1,0 +1,92 @@
+<ul class="pull-right pagination">
+    {% if paginator.numpages>=2%}
+        {% for i in range(paginator.currentpage-3, paginator.currentpage+3) %}
+            {#    {% for i in 1..paginator.numpages %}#}
+            {#        {% if i>paginator.currentpage-4 and i<paginator.currentpage+4 %}#}
+            {% if i==paginator.currentpage %}
+                <li>
+                    <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{1}}', 'filter_content')">
+                        <img alt="First" title="First" src="{{ asset('bundles/juepas/images/previous.png') }}" />
+                    </span>          
+                </li>
+                <li>
+                    <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{i-1}}', 'filter_content')">
+                        <img alt="Previous page" title="Previous page" src="{{ asset('bundles/juepas/images/previous.png') }}" />
+                    </span>
+                </li>
+
+                <li class="active">
+                    <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{i}}', 'filter_content')">
+                        {{i}}
+                    </span>
+                </li>
+
+                <li>
+                    <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{i+1}}', 'filter_content')">
+                        <img alt="Next page" title="Next page" src="{{ asset('bundles/juepas/images/next.png') }}" />  
+                    </span>
+                </li>
+                <li>
+                    <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{paginator.numpages}}', 'filter_content')">
+                        <img alt="Last" title="Last" src="{{ asset('bundles/juepas/images/next.png') }}" />  
+                    </span>
+                </li>
+            {% else %}
+                {% if i in 1..paginator.numpages %}
+                    <li>
+                        <span onclick="loadPage('{{paginator.currentUrl}}?limit={{paginator.limit}}&amp;page={{i}}', 'filter_content')">
+                        </span>
+                    </li>
+
+                {% endif %}
+            {% endif %}
+            {#     {% endif %} #}
+        {% endfor %}
+    {% endif %}
+</ul>
+
+<form id= "paginator" name="paginator" method="get" action="#" >
+    <label class="legends" for="limit">List Per Page: </label>
+    <select name="limit" id="limit">
+        {% for opt in paginator.options%}
+            {% if opt > 0 %}
+                <option value="{{opt}}" {% if paginator.limit == opt %}selected {% endif %}>{{opt}}</option>
+            {% endif %}
+        {% endfor %}
+        <option value="0" {% if paginator.limit==0 %}selected{% endif %}>All</option>
+    </select>
+    <input type="submit" value="Go"/> 
+</form>
+
+
+<script>
+    $(function () {
+        $('#paginator').submit(function (e) {
+            // stop the form from submitting the normal way and refreshing the page                
+            e.preventDefault();
+            $.ajax({
+                type: 'get',
+                url: '{{ url("admin_extLogentries") }}',
+                data: $('#paginator').serialize()
+            }) // using the done promise callback
+                    .done(function (data) {
+                        // log data to the console so we can see
+                        console.log(data);
+                        // here we will handle errors and validation messages
+                        document.getElementById("filter_content").innerHTML = '<div class="container alert alert-info">' + data + '</div>';
+                        window.scrollTo(0, 0);
+                    })
+                    .fail(function (data) {
+                        // log data to the console so we can see
+                        document.getElementById("alert_box").innerHTML = '<div class="container alert alert-danger"> There was an Error </div>';
+                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                        console.log(data);
+                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                        // here we will handle errors and validation messages
+                        document.getElementById("filter_content").innerHTML = '<div class="container alert alert-danger">' + data + '</div>';
+                        window.scrollTo(0, 0);
+                    });
+        });
+    });
+</script>
+

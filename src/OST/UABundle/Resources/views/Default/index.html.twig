@@ -1,0 +1,138 @@
+{% extends 'home_page.html.twig' %}
+
+{% block application_simple_title %}
+    <strong> Strategic Management Information System</strong>
+{% endblock %}
+
+{% block mainTitle %}
+    <li>
+        <i class="icon-home home-icon"></i>
+        <a href=""><strong>{% trans %}OCA login Statistics{% endtrans %}</strong></a>
+        <span class="divider">
+            <i class="arrow-icon"></i>
+        </span>
+    </li>
+{% endblock mainTitle %}
+
+{% block subTitle %}
+    <li class="active">
+        <strong>{% trans %}OCA lOGIN Statistics{% endtrans %}</strong>
+    </li>
+{% endblock subTitle %}
+
+{% block body %}
+
+
+    {% if stat|length > 0 %}
+        <div class="clearfix">
+            <div class="pull-right tableTools-container">
+                Total of {{ stat|length }}
+            </div>
+        </div>
+
+        {#        {{ dump(stat) }}#}
+        <table class="table table-bordered table-condensed table-hover">
+            <tr>
+            <thead class="black white-text">
+            <th>User Name</th>
+            <th>Login Count</th>
+        </thead>
+    </tr>
+    {% for user_login in stat %}
+        <tr>
+            <td>{{user_login.username}}
+                <a class="glyphicon glyphicon-chevron-down" title="history" id="log{{user_login.username}}"> </a>
+
+                <a title="Show user information" 
+                   id="showUserInfo{{user_login.username}}"
+                   data-toggle="modal" 
+                   data-target="#showUserInfoModal"> 
+                    <i class="ace-icon fa fa-plus"></i>
+                </a>
+
+            </td>
+            <td>{{user_login.Totalcount}}</td>
+        </tr>
+
+
+
+
+
+        <tr>
+            <td colspan="2">
+                <div id="visitorlog{{user_login.username}}"></div>
+            </td>
+        </tr>
+
+
+        <div class="modal fade" id="showUserInfoModal" 
+             role="dialog" aria-labelledby="showUserInfoModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 80%; " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <strong class="modal-title" >{% trans %}User Contact Information{% endtrans %}</strong>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="showUserInfoModalContent">
+                    </div>
+                </div>
+                <div class="modal-body" id="showLogModalContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script >
+
+        $(document).ready(function () {
+            $("#log{{user_login.username}}").click(function () {
+                $.ajax({
+                    url: "{{ path('visitor_log', { 'username':user_login.username}) }}",
+                    success: function (result) {
+                        $("#visitorlog{{user_login.username}}").html(result);
+                    }, error: function (xhr, status, error) {
+
+                    }
+                });
+            });
+        });
+
+
+    </script>
+    <script >
+
+        $(document).ready(function () {
+            $("#showUserInfo{{user_login.username}}").click(function () {
+                $.ajax({
+                    url: "{{ path('user_contact_info', { 'username':user_login.username}) }}",
+                    success: function (result) {
+                        $("#showUserInfoModalContent").html(result);
+                        $("#showUserInfoModalContent").notify("Succesfully Loaded!", {
+                            position: "top",
+                            className: "success"
+                        });
+                    }, error: function (xhr, status, error) {
+                        $("#showUserInfoModalContent").notify(xhr.responseText, {
+                            position: "top",
+                            className: "error"
+                        });
+                    }
+                });
+            });
+        });
+
+
+    </script>
+{% endfor %}
+</table>
+
+
+{% endif %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,230 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+
+<div id="login-box" class="login-box" style="border-radius: 25px;
+  border: 4px solid #CAE1FF;
+  padding: 20px; 
+  width: 1000px;
+  height: 1000px;">	
+  
+<div class="row">
+
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="alert alert-block alert-success" style="border-radius: 18px;">
+									<button type="button" class="close" data-dismiss="alert">
+										<i class="ace-icon fa fa-times"></i>
+									</button>
+
+									<i class="ace-icon fa fa-check green"></i>
+
+									{% trans %}Welcome to{% endtrans %}
+									<strong class="green">
+										
+									</strong>
+									{% trans %}Zeta Construction{% endtrans %}
+								</div>
+								
+        {% block fos_user_content %}
+         {% endblock %}
+                 
+        <div id="timeline-1">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+<h4 class="header smaller lighter blue"><b>{% trans %}Mission, Vission, Core values and Strategic Themes of Zeta Construction{% endtrans %}</b></h4>
+{################################## Mission(Ergama) ##################################################}
+                    <div class="timeline-container">
+                        <div class="timeline-label">
+                            <span class="label label-warning arrowed-in-right label-lg">
+                                <b>{% trans %}Mission{% endtrans %}</b>
+
+                            </span>
+                        </div>
+
+                        <div class="timeline-items">
+                            <div class="timeline-item clearfix">
+                                <div class="timeline-info">
+                                    <img src="{{ asset('images/newlogo.png') }}"/>
+
+                                </div>
+
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Mission{% endtrans %}</a>
+                                        </h5> 
+
+
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+<p>{% trans %} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et{% endtrans %}</p>
+
+ 
+
+                                            <div class="space-6"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+{################################## Vision(Mul’ata) ##################################################}
+                                <div class="timeline-label">
+                                    <span class="label label-success arrowed-in-right label-lg">
+                                        <b>{% trans %}Vision{% endtrans %}</b>
+                                    </span>
+                                </div>
+                                <div class="timeline-info">
+                                    <img src="{{ asset('images/newlogo.png') }}"/>
+
+                                </div>
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Vision{% endtrans %}</a>
+
+                                        </h5>  
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+
+<p>{% trans %} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et{% endtrans %}</p>
+
+                                            <div class="space-6"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-label">
+{############################ Strategic Theme(Toora Xiyyeeffannoo) #################################}
+                                    <span class="label label-warning arrowed-in-right label-lg">
+                                        <b> {% trans %}Strategic Theme{% endtrans %}</b> 
+                                    </span>
+                                </div>
+                                <div class="timeline-info">
+                                    <img src="{{ asset('images/newlogo.png') }}"/>
+
+                                </div>
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Strategic Theme{% endtrans %}</a>
+
+                                        </h5>
+
+
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+ <table class="table table-bordered table-striped table-condensed" style="font-size:12px; background-color:whitesmoke" id="datatables-example"> 
+ 
+<th>{% trans %}No{% endtrans %}</th>
+<th>{% trans %}Strategic Theme{% endtrans %}</th>
+<th>{% trans %}Advantages of Strategic Theme{% endtrans %}</th>
+ 
+<tbody>
+<tr>
+<td>1</td>
+<td>{% trans %}Zeta Construction{% endtrans %}</td>
+<td>{% trans %} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et{% endtrans %}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>{% trans %}Zeta Construction{% endtrans %}</td>
+<td>{% trans %} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et {% endtrans %}</td>
+</tr>
+<tbody>
+</table>
+ 
+ 
+                                            <div class="space-6"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-label">
+{############################ Core Value(Duudhaalee) #################################}
+                                    <span class="label label-info arrowed-in-right label-lg">
+                                        <b>  {% trans %}Core Value{% endtrans %}  </b>
+                                    </span>
+                                </div>
+                                <div class="timeline-info">
+                                    <img src="{{ asset('images/newlogo.png') }}"/>
+
+                                </div>
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue"> {% trans %}Core Value{% endtrans %}</a>
+
+                                        </h5>
+
+
+
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+
+ 
+
+<div class="#">
+<p><b>{% trans %}Our core values are{% endtrans %}</b></p>
+   <ol>
+      <li><a href="#">{% trans %}Quality First{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Team Work{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Area of Business{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Zeta Construction{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Zeta Construction{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Zeta Construction{% endtrans %}</a></li>
+     <li><a href="#">{% trans %}Zeta Construction{% endtrans %}</a></li>
+   </ol>
+</div>
+ 
+
+
+                                            <div class="space-6"></div>
+
+                                            <!--   -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+</div>
+</div>
+</div>
+</div>
+          
+
+ 
+{% endblock %}

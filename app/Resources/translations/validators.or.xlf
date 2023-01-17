@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext" target-language="or">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[One or more of the given values is invalid.]]></source>
+        <target><![CDATA[Tokko ykn Baayyee gatii  fashala kene]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[This field was not expected.]]></source>
+        <target><![CDATA[Deebiin Kun Kan Hin Eegamne]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[This value is not a valid date.]]></source>
+        <target><![CDATA[Gatiin Guyyaa Gataa'aa Miti]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[This field is missing.]]></source>
+        <target><![CDATA[Unkaan kun Hir'uudha]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

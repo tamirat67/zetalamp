@@ -1,0 +1,20 @@
+{% extends 'home_page.html.twig' %}
+{% block body -%}
+ <table class="table table-bordered table-condensed table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Host Ip</th>
+                    <th> Login Date</th>
+                </tr>
+            {% for visitorlog in visitorlogs %}
+                <div>
+                <tr>
+                    <td>{{visitorlog.hostip}}</td>
+                    {#<td>{{visitor_log.updatedat}}</td>#}
+                    <td> {{ visitorlog.updatedat|date('Y-m-d H:i:s') }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}

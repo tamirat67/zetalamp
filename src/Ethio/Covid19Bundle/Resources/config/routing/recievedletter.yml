@@ -1,0 +1,24 @@
+recievedletter_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:RecievedLetter:index" }
+    methods:  GET
+
+recievedletter_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:RecievedLetter:show" }
+    methods:  GET
+
+recievedletter_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:RecievedLetter:new" }
+    methods:  [GET, POST]
+
+recievedletter_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:RecievedLetter:edit" }
+    methods:  [GET, POST]
+
+recievedletter_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:RecievedLetter:delete" }
+    methods:  DELETE

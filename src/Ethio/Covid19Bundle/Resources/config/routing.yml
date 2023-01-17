@@ -1,0 +1,75 @@
+covid19_contactus:
+    resource: "@Covid19Bundle/Resources/config/routing/contactus.yml"
+    prefix:   /contactus
+welcomehome:  
+    path:   /building_home
+    defaults: { _controller: Covid19Bundle:Default:welcomeHome }
+welcome_road_home:
+    path:   /road_home
+    defaults: { _controller: Covid19Bundle:Default:welcomeRoadHome }
+welcome_water_home:
+    path:   /water_home
+    defaults: { _controller: Covid19Bundle:Default:welcomeWaterHome }
+covid19_organizationname:
+    resource: "@Covid19Bundle/Resources/config/routing/organizationname.yml"
+    prefix:   /organizationname
+
+covid19_letter:
+    resource: "@Covid19Bundle/Resources/config/routing/letter.yml"
+    prefix:   /letter
+covid19_recievedletter:
+    resource: "@Covid19Bundle/Resources/config/routing/recievedletter.yml"
+    prefix:   /recievedletter
+
+maps:
+    path:   /maps
+    defaults: { _controller: Covid19Bundle:Default:maps }
+help:
+    path:   /help
+    defaults: { _controller: Covid19Bundle:Default:help }
+document:
+    path:   /document
+    defaults: { _controller: Covid19Bundle:Default:document }
+contact:
+    path:   /contact
+    defaults: { _controller: Covid19Bundle:Default:contact }
+aboutus:
+    resource: "@Covid19Bundle/Resources/config/routing/aboutus.yml"
+    prefix:   /aboutus
+homepage:
+    path:   /
+    defaults: { _controller: Covid19Bundle:Default:index: }
+
+covid19_admin_extlogentries:
+    resource: "@Covid19Bundle/Resources/config/routing/extlogentries.yml"
+    prefix:   /extlogentries
+
+login:
+    path:     /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+ovid19_entity_translation:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/{locale}/{field}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:saveTranslation }
+    methods:  [GET, POST]
+covid19_entity_log:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:logShow }
+    methods:  [GET]    
+covid19_office:
+    resource: "@Covid19Bundle/Resources/config/routing/office.yml"
+    prefix:   /office    
+ocaua_entity_log:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:logShow }
+    methods:  [GET]
+ocaua_entity_translation:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/{locale}/{field}/entity-log
+    defaults: { _controller: Covid19Bundle:Default:saveTranslation }
+    methods:  [GET, POST]
+covid19_visitorlog:
+    resource: "@Covid19Bundle/Resources/config/routing/visitorlog.yml"
+    prefix:   /visitorlog
+
+
+        

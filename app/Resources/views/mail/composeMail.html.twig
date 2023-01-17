@@ -1,0 +1,53 @@
+{% extends 'mailLayout.html.twig' %}
+
+{% block body2 %}
+ 
+    <!-- Include the plugin's CSS and JS: -->
+    <script src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}" />
+
+    {{ form_start(form) }}
+    <div class="col-md-12">
+        {#<input type="text" class="txtinput border-none box-shadow-none" placeholder="email address.."/>#}
+        <label>To:</label>
+        {{ form_widget(form.mail_to,{'id':'mail-to-selected'}) }}
+    </div>
+    <div class="col-md-12">
+        <label>Subject:</label>
+        {#<input type="text" class="txtinput border-none box-shadow-none" placeholder="subject.."/>#}
+        {{ form_widget(form.mail_subject) }}
+    </div>
+    <div class="col-md-12">
+        <label>Tag:</label>
+        {#<input type="text" class="txtinput border-none box-shadow-none" placeholder="subject.."/>#}
+        {{ form_widget(form.mail_tag) }}
+    </div>
+    <div class="col-md-12">
+        <label>Body</label>
+        {{ form_widget(form.mail_body) }}
+        {#<textarea class="summernote" placeholder="Type Your Message.."></textarea>#}
+    </div>
+    <div class="col-md-12">
+        <div class="pull-right">
+            {{ form_widget(form.send, { 'label': 'Send' }) }}
+            {{ form_widget(form.draft, { 'label': 'Save as draft' }) }}
+
+            {#<input type="submit" class="btn btn-danger" name="Send" value="Send"/>#}
+            {#<input type="submit" class="btn btn-default" name="Draft" value="Save as draft"/>#}
+        </div>
+    </div>
+    </div>
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#mail-to-selected').multiselect({
+                enableClickableOptGroups: true,
+                enableCollapsibleOptGroups: true,
+                enableFiltering: true,
+                includeSelectAllOption: true
+            });
+        });
+    </script>
+{% endblock %}

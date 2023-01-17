@@ -1,0 +1,19 @@
+{% extends 'mailLayout.html.twig' %}
+
+{% block body2 %}
+    <div class="col-md-12 mail-right-content">
+    <table class="table table-hover">
+    {% for inboxMail in inboxMails %}
+    <tr {% if inboxMail.isread %} class="read" {% else %} class="unread" {% endif %}>
+    <td class="check"><input type="checkbox" class="icheck" name="checkbox1" /></td>
+    <td class="contact">
+    <a href="{{ path('mail_show', { 'id': inboxMail.id }) }}">{% if inboxMail.repliedTo %} Re: {% endif %}{{ inboxMail.sender }}  </a><span class="label pull-right label-primary">{{ inboxMail.mailtag }}</span>
+    </td>
+    <td class="subject">
+    <a href="{{ path('mail_show', { 'id': inboxMail.id }) }}">{{ inboxMail.mailsubject }}</a>
+    </td>
+    </tr>
+    {% endfor %}
+    </table>
+    </div>
+{% endblock %}

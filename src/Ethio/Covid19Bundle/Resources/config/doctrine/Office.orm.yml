@@ -1,0 +1,74 @@
+Ethio\Covid19Bundle\Entity\Office:
+  type: entity
+  table: office
+  repositoryClass: Ethio\Covid19Bundle\Repository\OfficeRepository
+  gedmo:
+    loggable: true
+    translation:
+      locale: localeField       
+  id:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+      unique: true
+      gedmo:
+        versioned: true
+        translatable: true
+        
+    description:
+      type: text
+      nullable: true
+      gedmo:
+        versioned: true
+        translatable: true
+        
+    created_at:
+      type: date
+      nullable: true
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    users:
+      targetEntity: OST\UABundle\Entity\User
+      mappedBy: office
+  manyToOne:
+    parentOffice:
+      targetEntity: Office
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"
+      gedmo:
+        versioned: true
+    createdBy:
+      targetEntity: OST\UABundle\Entity\User
+      gedmo:
+        blameable:
+          on: create
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"          
+    updatedBy:
+      targetEntity: OST\UABundle\Entity\User
+      gedmo:
+        blameable:
+          on: update
+      joinColumn:
+          referencedColumnName: id
+          onDelete: "SET NULL"
+          onUpdate: "SET NULL"          
+                  

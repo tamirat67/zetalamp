@@ -1,0 +1,114 @@
+
+{% block body %}
+    {% block list %}
+        <h3>
+            <ul>
+                {% set counter=1 %}
+                {% for office in offices %}
+                    <li style="list-style: none">
+                        <a id="more{{office.id}}" href="#">
+                            <span id="more{{office.id}}sign" class="glyphicon glyphicon-plus-sign"></span>
+                        </a>
+                        {{ office.name }} 
+
+                        <span title="{% trans %}Show{% endtrans %}" class="pull-right btn  btn-xs" data-toggle="modal" data-target="#showOfficeModal" id="showofficeDetail{{office.id}}">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                        </span>
+
+                        <!-- edit link -->
+                        <span title="Edit" class="pull-right btn  btn-xs" id="editoffice{{office.id}}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            <i class="&#xf676"></i>
+                        </span> 
+
+
+                        <hr width="100%">
+
+
+
+
+
+                        <div id="more{{office.id}}content" style="display: none"></div>
+
+
+                        <script>
+                            $(document).ready(function () {
+                                $("#showofficeDetail{{office.id}}").click(function () {
+                                    $.ajax({
+                                        url: "{{ path('office_show', {'id':office.id}) }}",
+                                        success: function (result) {
+                                            $("#showOfficeContent").html(result);
+
+                                        }, error: function (xhr, status, error) {
+                                            $("#showOfficeContent").html("Problem");
+
+                                        }
+                                    });
+                                });
+                            });
+
+                        </script>
+
+
+                        <script>
+                            $(document).ready(function () {
+                                $("#editoffice{{office.id}}").click(function () {
+                                    $.ajax({
+                                        url: "{{ path('office_edit', {'id':office.id}) }}",
+                                        success: function (result) {
+                                            $("#form_control_office").html(result);
+
+                                        }, error: function (xhr, status, error) {
+                                            $("#form_control_office").html("Problem");
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+
+
+
+
+                        <script>
+                            $(document).ready(function () {
+                                $("#more{{office.id}}").click(function () {
+                                    var x = document.getElementById("more{{office.id}}content");
+                                    if (x.style.display === "none") {
+
+                            {#                                        x.style.display = "none";
+                                                                }#}
+                                                                                $.ajax({
+                                                                                    url: "{{ path('office_index', {'parent':office.id}) }}",
+                                                                                    success: function (result) {
+                                                                                        $("#more{{office.id}}content").html(result);
+
+                                                                                    }, error: function (xhr, status, error) {
+                                                                                        $("#more{{office.id}}content").html("Problem");
+
+                                                                                    }
+                                                                                });
+                                                                                x.style.display = "block";
+                                                                                var minus = document.getElementById("more{{office.id}}sign");
+                                                                                minus.classList.remove("glyphicon-plus-sign");
+                                                                                minus.classList.add("glyphicon-minus-sign");
+                                                                            } else {
+                                                                                x.style.display = "none";
+                                                                                var plus = document.getElementById("more{{office.id}}sign");
+                                                                                plus.classList.remove("glyphicon-minus-sign");
+                                                                                plus.classList.add("glyphicon-plus-sign");
+                                                                            }
+                                                                        }
+                                                                        );
+                                                                    });
+                        </script>
+
+
+                        {% set counter=counter+1 %}
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </h3>
+    {% endblock   %}
+
+{% endblock %}

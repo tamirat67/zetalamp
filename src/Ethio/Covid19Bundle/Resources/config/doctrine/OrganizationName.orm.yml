@@ -1,0 +1,33 @@
+Ethio\Covid19Bundle\Entity\OrganizationName:
+  type: entity
+  table: organization_name
+  repositoryClass: Ethio\Covid19Bundle\Repository\OrganizationNameRepository
+  gedmo:
+    loggable: true 
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    name:
+      type: string
+      length: 255 
+    description:
+      type: text
+      nullable: true
+  
+  oneToMany:
+      letters:
+        targetEntity: Ethio\Covid19Bundle\Entity\Letter
+        mappedBy: organizationnames
+        joinColumn:
+            name: letter_id
+            referencedColumnName: id  
+      recievedletters:
+        targetEntity: Ethio\Covid19Bundle\Entity\RecievedLetter
+        mappedBy: organizationnames
+        joinColumn:
+            name: recievedletter_id
+            referencedColumnName: id    
+       
+                    

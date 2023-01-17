@@ -1,0 +1,106 @@
+
+<div>
+    {#  {% for user_info in user_profile %}#}
+    
+    
+    <div id="user-profile-1" class="user-profile row">
+        <div id="" class="row text-center blue">
+            <div class=" label label-info label-xlg arrowed-in arrowed-in-right">
+
+                <span class="white">
+                    {% if user_profile.userOffice %}
+                        {{user_profile.userOffice.officeLevelOneOffice.name}} : {{ user_profile.userOffice }}</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 center">
+            <div>
+                <span class="profile-picture">
+                    <img id="avatar" class="editable img-responsive editable-click editable-empty"  src="{{ asset('image/user.png') }}">
+
+                </span>
+                <div class="space-4"></div>
+                <div class=" label label-info label-xlg arrowed-in arrowed-in-right">
+                    <div class="inline position-relative">
+                        <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                            <i class="ace-icon fa fa-circle light-green"></i>
+                            &nbsp;
+                    {#        <span class="white">{{user_profile.firstName}} {{user_profile.fatherName}} {{user_profile.grandFatherName}}</span>#}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-6"></div>
+            <div class="hr hr12 dotted"></div>
+            <div class="clearfix">
+                <div class="grid2">
+                    <span class="bigger-175 blue"> </span>
+                    <br>
+                    Activities
+                </div>
+                <div class="grid2">
+                    <span class="bigger-175 blue"> </span>
+                    <br>
+                    Plan/Achievement Records   
+                </div>
+            </div>
+            <div class="hr hr16 dotted"></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="space-12"></div>
+            <div class="profile-user-info profile-user-info-striped">
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Username </div>
+                    <div class="profile-info-value">
+                        <span class="editable editable-click" id="username">{{user_profile.username}}</span>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> e-mail </div>
+                    <div class="profile-info-value">
+                        <i class="fa fa-mail-forward light-orange bigger-110"></i>
+                        <span class="editable editable-click" id="login">{{user_profile.email}}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Phone Number </div>
+                    <div class="profile-info-value">
+                        <i class="fa fa-phone light-orange bigger-110"></i>
+                        <span class="editable editable-click" id="country">{{user_profile.phone}}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Gender </div>
+                    <div class="profile-info-value">
+                        <span class="editable editable-click" id="age">{{user_profile.gender}}</span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Created On </div>
+                    <div class="profile-info-value">
+                        <span class="editable editable-click" id="signup"> <td>{% if user_profile.createdat %}{{ user_profile.createdat|date('Y-m-d') }}{% endif %}</td></span>
+                    </div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Account Status </div>
+                    <div class="profile-info-value">
+                        <span class="editable editable-click" id="login">{{user_profile.status}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+

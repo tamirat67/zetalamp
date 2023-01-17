@@ -1,0 +1,12 @@
+admin_extLogentries:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:ExtLogEntries:index" }
+
+admin_extLogentries_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:ExtLogEntries:show" }
+    
+admin_extLogentries_filter:
+    path:     /filter
+    defaults: { _controller: "Covid19Bundle:ExtLogEntries:filter" }
+    

@@ -1,0 +1,24 @@
+about_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:About:index" }
+    methods:  GET
+
+about_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:About:show" }
+    methods:  GET
+
+about_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:About:new" }
+    methods:  [GET, POST]
+
+about_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:About:edit" }
+    methods:  [GET, POST]
+
+about_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:About:delete" }
+    methods:  DELETE

@@ -1,0 +1,29 @@
+{% extends 'home_page.html.twig' %}
+<section class="colorlib-contact" data-section="profile">
+    <div class="colorlib-narrow-content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                <span class="heading-meta">My account information</span>
+                <h2 class="colorlib-heading animate-box">My Profile</h2>
+            </div>
+        </div>
+
+        <div class="row" id="UserProfile">
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "{{ path('user_show', { 'id': app.user.id }) }}",
+            success: function (result) {
+                $("#UserProfile").html(result);
+            }, error: function (xhr, status, error) {
+                $("#UserProfile").html("Problem" + error);
+
+            }
+        });
+    });
+</script>

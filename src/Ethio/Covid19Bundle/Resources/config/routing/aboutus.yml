@@ -1,0 +1,32 @@
+aboutus_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:AboutUs:index" }
+    methods:  GET
+aboutus:
+    path:     /me
+    defaults: { _controller: "Covid19Bundle:AboutUs:anonymousidex" }
+    methods:  GET
+aboutus_admin_index:
+    path:     /admins
+    defaults: { _controller: "Covid19Bundle:AboutUs:Adminindex" }
+    methods:  GET
+
+aboutus_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:AboutUs:show" }
+    methods:  GET
+
+aboutus_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:AboutUs:new" }
+    methods:  [GET, POST]
+
+aboutus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:AboutUs:edit" }
+    methods:  [GET, POST]
+
+aboutus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:AboutUs:delete" }
+    methods:  DELETE

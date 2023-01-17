@@ -1,0 +1,92 @@
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body"> 
+
+
+            <div class="row   ">
+              
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content well">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="true">Personal info</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Addresses</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Account Details  </a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade" id="1" aria-labelledby="home-tab">
+                                    <br><p>  Status
+                                        {{ user.status }}
+                                    <p>  Office
+                                        {{ user.office.name }}
+                                    <p>  
+                                    <p> Created at:{% if user.createdat %}
+                                        {{ user.createdat|date('Y-m-d') }}
+                                        {% endif %}
+                                        </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="profile-tab">
+                                        <p>  Updated at:
+                                            {% if user.updatedat %}{{ user.updatedat|date('Y-m-d H:i:s') }}{% endif %}
+                                             </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade active in" id="3" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            
+                                        
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                         <p> Full  name: 
+                                            {{ user.firstname }}
+                                         {{ user.middlename }}
+                                        {{ user.lastname }}
+                                        <p> Gender: {{ user.gender }} 
+                                        <p> 
+                                            Phone: 
+                                            {{ user.phone }}</p>
+                                            Office: {{ user.office.name }}</p>
+                                        <p> 
+                                            Email: {{ user.email }}</p> 
+                                            Email: {{ user.permissions }}</p> 
+                                        </div>
+
+  <div class="col-md-5 col-sm-5 col-xs-5">
+    <div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body"> 
+
+                    
+                    {% if user.profilepic %}
+                    {{ user.profilepic }}
+                    {% else %}
+                    <img class="img-circle profile_img" src="{{ asset('sources/default-user.png') }}" alt="" style="width: 210px; height: 210px;">
+                    {% endif %}
+                </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>    
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+

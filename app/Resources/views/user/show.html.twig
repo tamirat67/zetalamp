@@ -1,0 +1,119 @@
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body"> 
+<div class="row  well">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+
+  {% if user.profilepic %}
+                        <img class="img-circle profile_img " src="{{ asset('uploads/employeephoto/'~user.profilepic) }}" alt="" style="width: 210px; height: 210px;">
+                    {% else %}
+                        <img class="img-circle profile_img " src="{{ asset('sources/default-user.png') }}" alt="" style="width: 210px; height: 210px;">
+                    {% endif %}
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="x_content  ">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active primary"><a href="#3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="true">{% trans %}Personal info{% endtrans %} </a>
+                                </li>
+                                <li role="presentation" class=""><a href="#2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">{% trans %}Addresses{% endtrans %}</a>
+                                </li>
+                                <li role="presentation" class=""><a href="#1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">{% trans %}Roles{% endtrans %}  </a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade" id="1" aria-labelledby="home-tab">
+                                    <br><p>  {% trans %}Status{% endtrans %}:
+                                        {{ user.status }}
+                                    
+                                    <p> {% trans %}Created at{% endtrans%}: 
+                                        {% if user.createdat %}
+                                        {{ user.createdat|date('Y-m-d') }}
+                                        {% endif %}
+                                        </p>
+ <p>
+    {% for role in user.roles %}
+                                                <span class="badge badge-inverse">{{ role }}</span>
+                                            {% endfor %}               
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="profile-tab">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                <p>  {% trans %}Updated at{% endtrans%} :
+                                                    {% if user.updatedat %}{{ user.updatedat|date('Y-m-d H:i:s') }}
+                                                    {% endif %} </p> 
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                                    {% trans %}Bureau/Office/Sector Hierarchy{% endtrans%}: 
+                                                   
+
+                                       {% if user.office ==NULL %}
+                                           <p class="label label-danger">{% trans %}No Bureau/Office/Sector office is assigned for this user{% endtrans %}! ( 
+                                            {{ user.username }})</p>
+
+                                     {% else%}
+
+                                     {{ user.office.FullParentOffice}}
+ 
+                                    
+                                     {% endif %}
+                                                   
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade active in" id="3" aria-labelledby="profile-tab">
+
+                                        <p> 
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                                <p> {% trans%}First name{% endtrans %}
+                                                    {{ user.firstname }}
+                                                <p>   {% trans%}Middle name{% endtrans %}
+                                                    {{ user.middlename }}
+                                                <p>    {% trans%}Last name{% endtrans %}
+                                                    {{ user.lastname }}
+                                                <p> {% trans %}Gender {% endtrans %} {{ user.gender }} 
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                                    {% trans %}Phone{% endtrans %}
+                                                    {{ user.phone }}</p>
+                                                    {% trans%}Office Number{% endtrans %}: {{ user.officeNo }}</p>
+                                                    {% trans%}BUilding Number{% endtrans %}: {{ user.officeNo }}</p>
+                                                    <p> 
+                                                        {% trans %}Email{% endtrans %}
+                                                        {{ user.email }}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>    
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

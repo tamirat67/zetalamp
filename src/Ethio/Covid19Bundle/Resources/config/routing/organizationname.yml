@@ -1,0 +1,24 @@
+organizationname_index:
+    path:     /
+    defaults: { _controller: "Covid19Bundle:OrganizationName:index" }
+    methods:  GET
+
+organizationname_show:
+    path:     /{id}/show
+    defaults: { _controller: "Covid19Bundle:OrganizationName:show" }
+    methods:  GET
+
+organizationname_new:
+    path:     /new
+    defaults: { _controller: "Covid19Bundle:OrganizationName:new" }
+    methods:  [GET, POST]
+
+organizationname_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "Covid19Bundle:OrganizationName:edit" }
+    methods:  [GET, POST]
+
+organizationname_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "Covid19Bundle:OrganizationName:delete" }
+    methods:  DELETE

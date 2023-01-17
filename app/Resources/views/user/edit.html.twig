@@ -1,0 +1,26 @@
+ 
+<section class="panel" id="formside_user">
+    {% block sidebartitle %}
+        <h3 class="green"><i class="fa fa-edit"></i> {% trans %}Edit{% endtrans %}</h3>
+    {% endblock %}
+    
+                   {{ form_start(edit_form, {'action': path('user_edit', {'id':user.id})}) }}
+
+             {{ form_widget(edit_form) }}
+            <!-- <input class="btn btn-primary btn-responsive" type="submit" value="Update" /> -->
+                    
+
+ <div class="col-md-6 col-sm-6 col-xs-12">
+
+<input class="btn btn-primary btn-block " type="submit" value="{% trans %}Update{% endtrans %}" />
+        </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+          
+<a href="{{ path('user_index') }}" class="btn btn-warning btn-block ">{% trans %}Cancel{% endtrans %}</a>
+
+
+</div>
+                        {{ form_end(edit_form) }}
+                    
+    
+</section>  

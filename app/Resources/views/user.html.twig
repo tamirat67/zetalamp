@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% trans %}OCMIS{% endtrans %}</title>
+   
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="{{ asset('bundles/covid19/images/newlogo.png') }}">
+
+        <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700%22%20rel=%22stylesheet" rel="stylesheet"> -->
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/animate.css') }}">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/icomoon.css') }}">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/bootstrap6.css') }}">
+        <!-- Flexslider  -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/flexslider.css') }}">
+        <!-- Flaticons  -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/flaticon.css') }}">
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/owl.theme.default.min.css') }}">
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="{{ asset('bundles/covid19/css/style.css') }}">
+
+        <!-- Modernizr JS -->
+        <script src="{{ asset('bundles/covid19/js/modernizr-2.6.2.min.js') }}"></script>
+        <!-- FOR IE9 below -->
+
+
+
+        <!-- jQuery -->
+        <script data-cfasync="false" src="{{ asset('bundles/covid19/js/email-decode.min.js') }}"></script>
+        <script src="{{ asset('bundles/covid19/js/jquery.min.js') }}"></script>
+        <!-- jQuery Easing -->
+        <script src="{{ asset('bundles/covid19/js/jquery.easing.1.3.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="{{ asset('bundles/covid19/js/bootstrap.min.js') }}"></script>
+        <!-- Waypoints -->
+        <script src="{{ asset('bundles/covid19/js/jquery.waypoints.min.js') }}"></script>
+        <!-- Flexslider -->
+        <script src="{{ asset('bundles/covid19/js/jquery.flexslider-min.js') }}"></script>
+        <!-- Owl carousel -->
+        <script src="{{ asset('bundles/covid19/js/owl.carousel.min.js') }}"></script>
+        <!-- Counters -->
+        <script src="{{ asset('bundles/covid19/js/jquery.countTo.js') }}"></script>
+
+
+        <!-- MAIN JS -->
+        <script src="{{ asset('bundles/covid19/js/main.js') }}"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-23581568-13');
+        </script>
+        <style>
+            p {
+                box-sizing: border-box;
+                color: rgba(0, 0, 0, 0.7);
+                font-family: "Quicksand", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 28.8px;
+                margin-bottom: 24px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="colorlib-page">
+            <div class="container-wrap">
+                <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+                    <div class="text-center">
+                        <div class="author-img" style="background-image: url({{ asset('bundles/covid19/images/newlogo.png') }});"> 
+                      <!--   -->                     
+                        </div>
+                        <h1 id="colorlib-logo"><a href="#">{% trans %}Oromia Construction Management Information System{% endtrans %}</a></h1>
+                        <span class="position">{% trans %}Oromia Construction Authority{% endtrans %}</span>
+                        </div>
+                        <nav id="colorlib-main-menu" role="navigation" class="navbar">
+                            <div id="navbar">
+                                <ul>
+                                    <li class="active"><a href="#" data-nav-section="home">{% trans %}Home{% endtrans %}</a></li>
+                                    <li><a id="stores" href="#" data-nav-section="stock">{% trans %}Dashboard{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="request">{% trans %}New Request{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="followup">{% trans %}Follow-up{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="services">{% trans %}Services{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="manual">{% trans %}Manual{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="about">{% trans %}About{% endtrans %}</a></li>
+                                    <li><a href="#" data-nav-section="profile">{% trans %}My Profile{% endtrans %}</a>
+                                    </li>  <li><a href="#" data-nav-section="cont">{% trans %}Contact Us{% endtrans %}</a>
+                                    </li>
+
+                                </a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                   
+                                
+                             
+                    </aside>
+
+                    <div id="colorlib-main">
+                        <section class="content-header">
+                            <ol class="breadcrumb">
+                                <a href="{{ path('project_index') }}" class="btn">Admin</a>
+                                <li class="nav-item dropdown  pull-right">
+                                    <a href="#" class="dropdown-toggle btn" data-toggle="dropdown">Language</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item btn btn-primary btn-block" href="{{ path('switch_language', { '_locale': 'en' }) }}">{% trans %}English{% endtrans %}</a>
+                                       
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item  btn btn-primary btn-block" href="{{ path('switch_language', { '_locale': 'or' }) }}">{% trans %}Afaan Oromoo{% endtrans %}</a>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item dropdown  pull-right">
+                                    <a href="#" class="dropdown-toggle  btn" data-toggle="dropdown">Account</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item  btn btn-primary btn-block" href="{{ path('fos_user_profile_edit') }}"> {% trans %}Edit Profile{% endtrans %}</a>
+                                        <a class="dropdown-item  btn btn-primary btn-block" href="{{ path('fos_user_change_password') }}"> {% trans %}Change Password{% endtrans %}</a>
+                                        <a class="dropdown-item  btn btn-primary btn-block" href="{{ path('fos_user_security_logout') }}"> {% trans %}Logout{% endtrans %}</a>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+                                </li>
+                            </ol> 
+                        </section>
+
+                        <section id="colorlib-hero" data-section="home" >
+                            {% block body %}
+
+                            {% endblock %} 
+                        </section>
+                  {#      {% include 'includes/stock.html.twig' %}
+                        {% include 'includes/request.html.twig' %}
+                        {% include 'includes/followup.html.twig' %}
+                        {% include 'includes/services.html.twig' %}
+                        {% include 'includes/manual.html.twig' %}
+                        {% include 'includes/about.html.twig' %}
+
+                      {% include 'includes/profile.html.twig' %}
+                      {% include 'includes/contact.html.twig' %} #}
+                          <!--   -->
+
+                    </div><!-- end:colorlib-main -->
+                </div><!-- end:container-wrap -->
+            </div><!-- end:colorlib-page -->
+
+        </body>
+    </html>
+

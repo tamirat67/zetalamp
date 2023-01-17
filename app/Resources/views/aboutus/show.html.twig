@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{% trans %}About Us{% endtrans %}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <td>{{ aboutUs.id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Mission{% endtrans %}</th>
+                <td>{{ aboutUs.Mission|raw }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Vision{% endtrans %}</th>
+                <td>{{ aboutUs.Vision|raw }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Core Values{% endtrans %}</th>
+                <td>{{ aboutUs.CoreValues|raw }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Strategic Themes{% endtrans %}</th>
+                <td>{{ aboutUs.Strategicthemes|raw }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('aboutus_index') }}">{% trans %}Back{% endtrans %}</a>
+        </li>
+        <li>
+            <a href="{{ path('aboutus_edit', { 'id': aboutUs.id }) }}">{% trans %}Edit{% endtrans %}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="{% trans %}Delete{% endtrans %}">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

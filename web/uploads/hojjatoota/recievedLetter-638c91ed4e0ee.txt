@@ -1,0 +1,380 @@
+
+            #nameserver 10.140.5.26
+nameserver 10.140.5.25
+search ju.edu.et
+
+composer du -o or composer dump-autoload -o
+CREATE USER 'tame'@'localhost' IDENTIFIED BY 't2@insa2015';
+
+=================================
+
+sudo apt-get install mysql-server php7.0-mysql
+
+sudo apt-get install php7.0-curl php7.0-gd php7.0-json php7.0-mbstring php7.0-mcrypt
+php7.0-intl php7.0-cli php7.0-xml
+sudo apt-get install apache2 libapache2-mod-php7.0
+sudo nano /etc/apache2/php/7.0/php.ini
+localhost to remote server
+scp cacert.pem juuser@10.140.5.49:/var/www/html/backup
+=======================================================
+	sudo nano /etc/php/5.6/cli/php.ini
+========================================================
+ssh telement@10.140.5.161
+
+composer create-project symfony/framework-standard-edition testproject26 "2.6.*"
+==========================================================
+CREATE USER 'tame'@'localhost' IDENTIFIED BY 't2ict101';
+GRANT ALL ON mydb.* TO 'tame'@'localhost';
+
+remote user==================================================
+CREATE USER 'tame2'@'10.140.5.49' IDENTIFIED BY 't2ict101';
+ FLUSH PRIVILEGES; 
+==============================================================
+
+dig +short repo.packagist.org
+10.140.5.19
+sudo echo "54.37.2.184 repo.packagist.org" >> /etc/hosts
+tss ;
+pms;
+drupal migration
+==================
+hospital
+jucavm
+single sight
+==========================
+drupal development env
+====================
+10.140.5.216
+juuser
+r00tmesymfony new testsymfony 3.4
+ssh juuser@10.140.5.216
+=========================
+
+ scp -r /var/www/html/JU/jucavm/themes/garland/* tame@10.140.11.102:/home/tame/Desktop/
+
+sudo apt-get install php7.0-curl php7.0-gd php7.0-json php7.0-mbstring php7.0-mcrypt
+php7.0-intl php7.0-cli php7.0-xml
+
+scp -r /var/www/html/epas/* tame@10.140.11.235: /var/www/html/
+ composer create-project symfony/framework-standard-edition sfproject "2.8*"
+ composer create-project symfony/framework-standard-edition uas "2.8.*"
+
+ mv /home/ttame/Downloads/bnr3.jpg /home/ttame/Desktop/All\ inone/
+========================================================================
+sudo service apache2 restart
+<div class="hr hr32 hr-dotted"></div>
+=================================================
+sudo nano /etc/php/7.0/cli/php.ini
+sudo nano /etc/php/5.6/cli/php.ini
+-================================================
+
+challege ===========pdf to list search csv
+
+If you use Ubuntu, try to remove all mysql, apache and phpmyadmin packages.
+============================================================================
+sudo apt-get remove --purge *mysql\*
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo rm -rf /etc/mysql/var/lib/mysql
+sudo apt-get remove phpmyadmin
+sudo apt-get remove apache2
+
+Now reinstall all needed packages.
+
+sudo dpkg-reconfigure phpmyadmin
+sudo apt-get install php apache2 mysql-server mysql-client phpmyadmin
+
+sudo apt-get install libapache2-mod-auth-mysql php-mysql phpmyadmin
+
+sudo apt install php libapache2-mod-php
+=============================================================================         
+username tss
+=============================
+password xctPHwc1562Gqc2S
+10.142.8.17 ip tss
+======================================
+epas
+==================================================
+server_user juuser
+server_pw r00tme
+ip 10.140.5.49
+web_db_user root
+web_db_name juepas 
+web_db_pw t2ict101
+================================================
+1. composer create-project drupal-composer/drupal-project:8.x-dev mysitename --stability dev --no-interaction --no-install
+2. composer install
+======================================
+sudo chmod -R 755 /var/www/html/ permission
+sudo a2dissite 000-default.conf  
+sudo a2ensite 000-default.conf  
+sudo a2ensite hospital.localhost.conf
+sudo a2ensite jucavm.localhost.conf
+sudo service apache2 reload
+=====================================
+sudo ln -s /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled
+sudo a2dissite 000-default.conf 
+==================================================================
+mysqladmin create jucavm
+mysql -e "CREATE USER 'admin'@'%' IDENTIFIED BY 't2ict102';"
+mysql -e "GRANT ALL PRIVILEGES ON jucavm.* TO 'admin'@'%' WITH GRANT OPTION;"
+ 
+export http_proxy="http://proxy.ju.edu.et:8080"
+ export http_proxy="http://10.140.5.19:8080"
+  sudo /etc/init.d/apache2 restart
+===========================================
+sudo nano /etc/environment
+sudo nano /etc/apt/apt.conf
+===============================
+man git-config
+sudo nano ~/.gitconfig
+
+200x1024 root /
+swp 4gb 
+boot 500
+php -S localhost:8000 -t public
+composer dump-autoload
+=================================================
+php symfony list
+php symfony doctrine:build --all --and-load
+php check_configuration.php 
+php symfony cc
+php symfony publish:assets
+php symfony plugin:publish-assets
+================================================
+$ php doctrine orm:schema-tool:update
+
+	 bin/console doctrine:schema:validate
+
+sudo update-alternatives --set php /usr/bin/php7.3
+
+git status
+git add .
+git commit -m "customer deposit nd intrest"
+git push origin2 tame
+git checkout master
+git pull origin2 master
+git merge tame
+git push origin2 master
+history
+
+nameserver 10.160.5.25
+	
+																														unset https_proxy
+unset HTTPS_PROXY
+echo $HTTPS_PROXY;
+echo $http_proxy;
+echo $https_proxy;
+export http_proxy=http://10.140.5.19:8080;
+export https_proxy=http://10.140.5.19:8080;
+export HTTP_PROXY=http://10.140.5.19:8080;
+export HTTPS_PROXY=http://10.140.5.19:8080;
+export https_proxy_full_uri=false;
+export http_proxy_full_uri=true;
+proxy unset https_proxy=='https://proxy.10.140.5.19:8080'
+composer diag
+
+unset https_proxy
+unset HTTPS_PROXY
+echo $HTTPS_PROXY;
+echo $http_proxy;
+echo $https_proxy;
+export http_proxy=http://169.254.8.21:8080;
+export https_proxy=http://169.254.8.21:8080;
+export HTTP_PROXY=http://169.254.8.21:8080;
+export HTTPS_PROXY=http://169.254.8.21:8080;
+export https_proxy_full_uri=false;
+export http_proxy_full_uri=true;
+proxy unset https_proxy=='https://169.254.8.21:8080'
+
+
+gvfs-open OpenGTS_Config.pdf
+===================================
+fos_user_registration_register
+ php bin/console debug:router
+Organization
+Bundle:-
+php bin/console generate:bundle --namespace=Ju/HospitalBundle
+Entity:-
+php bin/console doctrine:generate:entity Patient
+Crud:-
+php bin/console doctrine:generate:crud JuHospitalBundle:Bill
+
+php bin/console generate:bundle  Ju/NockBundle
+php bin/console generate:bundle --namespace=Tame/TestBundle
+bin/console doctrine:generate:entities EvrHomeBundle:Article
+================================================================
+php bin/console doctrine:generate:entity AdministrationType
+php bin/console doctrine:generate:crud Covid19Bundle:User
+
+php bin/console doctrine:generate:entities PMSBundle/Entity/User
+php bin/console doctrine:generate:entities Covid19Bundle
+php bin/console doctrine:fixtures:load
+php bin/console doctrine:schema:update --force
+
+php bin/console lexik:translations:export --format=yml
+./bin/console lexik:translations:import [Covid19Bundle] [--cache-clear] [--force] [--globals]
+php bin/console lexik:translations:import --cache-clear --force
+===================================================================
+sudo nano /etc/ssh/sshd_config
+==================================================================
+sudo chmod -R 777 var/logs/ var/cache/ var/sessions/
+php bin/console debug:route
+
+tame@tame-Lenovo:~$ sudo scp -r epas juuser@10.140.5.49:/var/www/html/
+
+
+php composer.phar -vvvv update
+php bin/console assets:install
+php bin/console cache:clear --env=dev
+php app/console doctrine:database:create
+namespace:JuTrainingUasBandle
+Bundlename:JuTraingUasBundle
+
+{% if is_granted("ROLE") %}
+Hi {{ app.user.name}}
+{% endif %}
+
+http://www.jlsconsultingnc.com/symfony2-and-google-charts/
+
+<table  id="datatable_col_reorder" class="table table-striped jambo_table bulk_action">
+
+
+ttame-Lenovo-E51-80
+sudo tail -f /var/log/apache2/error.log
+
+cp -R /var/www/html/tt/vendor /var/www/html/transportationservice
+cp -R /var/www/html/tt/app/config/parameters.yml /var/www/html/transportationservice/app/config/
+
+
+sudo killall apt-get
+
+judrupal chmod 444 /.......
+menu list
+provide as menu
+
+&nbsp;
+
+Black border in all menus and black terminal after installing dictionary
+
+git init
+git config --global user.name"tame"
+git config --global user.email"tamirat.tanga@ju.edu.et"
+ssh-keygen -t rsa -C "tamirat.tanga@ju.edu.et"
+/home/tame/.ssh/id_rsa.
+sudo nano /home/tame/.ssh/id_rsa
+sudo nano /home/tame/.ssh/id_rsa.pub
+==============================
+ssh-add ~/.ssh/id_rsa
+========================
+git clone ..................
+
+
+ scp UBUNTU.BOX mine@10.140.11.198:/home/mine/Desktop
+=========================================
+<VirtualHost *:80>
+ServerName  srs.local
+ServerAlias www.srs.local
+DocumentRoot /home/ttame/sfprojects/srs/web
+DirectoryIndex index.php
+
+    <Directory /home/ttame/sfprojects/srs/web>
+        AllowOverride All
+        #Order Allow,Deny
+        Require all granted
+        Allow from All
+
+        <IfModule mod_rewrite.c>
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*)$ index.php [QSA,L]
+        </IfModule>
+    </Directory>
+
+    # uncomment the following lines if you install assets as symlinks
+    # or run into problems when compiling LESS/Sass/CoffeeScript assets
+     <Directory /home/ttame/sfprojects/srs/web>
+         Options FollowSymlinks
+     </Directory>
+    
+</VirtualHost>
+====================================================
+sudo nano /etc/apache2/sites-available/example.com.conf
+#NameVirtualHost \*:80
+
+	<VirtualHost \*:80>
+	  ServerName vh1.example.com
+	  DocumentRoot /var/www/vhosts/vh1
+	</VirtualHost>
+
+	<VirtualHost \*:80>
+	  ServerName vh2.example.com
+	  DocumentRoot /var/www/vhosts/vh2
+	</VirtualHost>
+source /var/www/html/backup/epas_new.sql
+
+CREATE USER 'tame'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xc#tPHwc1562Gqc2S';
+GRANT ALL PRIVILEGES ON tame.* TO 'tame'@'localhost';
+=====================================================
+sudo nano /etc/apache2/sites-available/epas.conf
+<VirtualHost *:80>
+ ServerName epas.ju.edu.et
+ DocumentRoot /var/www/html/epas/web
+ DirectoryIndex app.php
+ ErrorLog /var/log/apache2/epas-error.log
+ CustomLog /var/log/apache2/epas-access.log combined
+ <Directory "/var/www/html/epas/web">
+   AllowOverride All
+   Order allow,deny
+   Allow from All
+ </Directory>
+</VirtualHost>
+
+/////////
+
+
+<Directory "/$data_dir/symfony/web/sf">
+ AllowOverride All
+ Allow from All
+</Directory>
+<VirtualHost *:80>
+  ServerName tsrs.local
+  DocumentRoot "/var/www/html/tsrs/web"
+  DirectoryIndex index.php
+  Alias /sf /$data_dir/symfony/web/sf
+
+  <Directory "/var/www/html/tsrs/web">
+   AllowOverride All
+   Allow from All
+  </Directory>
+</VirtualHost>
+
+
+/////////
+
+
+ <Directory "/var/www/html">
+   #options FollowSymLinks 
+   options Indexes FollowSymLinks Includes ExecCGI
+   AllowOverride None
+   Order allow,deny
+   Allow from All
+ </Directory>
+
+ <Directory "/home/ttame/sfprojects/tsrs/">
+   #options FollowSymLinks
+   options Indexes FollowSymLinks Includes ExecCGI
+   AllowOverride None
+   Allow from All
+ </Directory>
+
+/etc/aache2/sites-available
+
+ composer create-project symfony/framework-standard-edition sfproject "2.8*"
+
+ composer create-project symfony/framework-standard-edition uas "2.8.*"
+
+ $ mv /home/ttame/Downloads/bnr3.jpg /home/ttame/Desktop/All\ inone/
+
+

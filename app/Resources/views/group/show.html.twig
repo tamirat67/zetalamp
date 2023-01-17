@@ -1,0 +1,50 @@
+ 
+
+{% block body %}  
+                                <div class="table-responsive">
+                                    <table class="table table-bordered ">
+                                        <tbody>
+                                        <tr>
+                                            <th>Name</th>
+                                            <td>{{ group.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Description</th>
+                                            <td>{{ group.description }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-bordered ">
+                                        <caption>Group permissions</caption>
+                                        <thead>
+                                        <th>Permission name</th>
+                                        <th>Description</th>
+                                        </thead>
+                                        <tbody>
+                                        {% for permission in group.permissions %}
+                                            <tr>
+                                                <td>{{ permission.name }}</td>
+                                                <td>{{ permission.description }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+           
+           <div class="pricing_footer">
+    <table>
+        <tr>
+             {% if is_granted('DELETE_GROUP', group) %}
+                                              
+                <td style="padding: 2px">
+                    {{ form_start(delete_form) }}
+                   <button  onclick="return confirm('Are you sure you want to Remove?');"class="btn btn-danger btn-responsive" type="submit" value="Delete"> <i class="fa fa-trash"> </i>Delete</button>
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    {{ form_end(delete_form) }}
+              
+             {% endif %}
+            </td>
+        </tr>
+    </table> 
+{% endblock %}

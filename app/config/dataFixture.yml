@@ -1,0 +1,5 @@
+# src/AppBundle/Resources/config/dataFixture.yml
+services:
+  _defaults:
+    tags: ['doctrine.fixture.orm']
+    autowire: true # if you need dependency injection, see next bullet point

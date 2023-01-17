@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}
+    <a   href="#"> <i class="fa fa-asset">User Management >> </i></a>
+{% endblock %}
+
+
+{% block submenu %}
+    <a   href="{{ path('permission_index') }}"> <i class="fa fa-asset">  Permission </i></a> 
+{% endblock %}
+ 
+{% block body %}
+    <div class="row">
+           <a class="btn btn-primary btn-responsive" href="{{ path('permission_index') }}">
+                                <i class="glyphicon glyphicon-adjust"></i> Back to list
+                            </a>
+                        </td>
+                        <td style="padding: 15px">
+                            {{ form_start(form) }}
+                            <input class="btn btn-success btn-responsive" type="submit" value="Create" />
+                            {{ form_errors(form) }}
+                 
+        
+    </div>
+    <div class="row">
+         <div class="box-body">
+                        {{ form_start(form) }}
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+              
+    </div></div>
+{% endblock %}

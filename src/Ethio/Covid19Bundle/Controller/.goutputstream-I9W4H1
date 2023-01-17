@@ -1,0 +1,226 @@
+<?php
+
+namespace Ethio\Covid19Bundle\Controller;
+
+use Ethio\Covid19Bundle\Entity\Water;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Ethio\Covid19Bundle\Filter\WaterFilterType;
+use Ethio\Covid19Bundle\Filter\FilterFunctions;
+use Ethio\Covid19Bundle\Form\WaterType;
+
+/**
+ * Author Tamirat Tanga
+ * tamirattanga@gmil.com, tamirat.tanga@ju.edu.et
+ *    +251912939267
+ */
+class WaterController extends Controller {
+
+    /**
+     * Lists all water entities.
+     *
+     */
+    public function indexAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        // $waters->setLocaleField('en');
+       //$water = $this->getWater();
+       $formFilter = $this->get('form.factory')->create(WaterFilterType::class);
+        $water = new Water();
+        $waters = $em->getRepository('Covid19Bundle:Water')->findAll();
+        $form = $this->createForm('Ethio\Covid19Bundle\Form\WaterType', $water);
+        $form->handleRequest($request);
+
+        if ($request->query->has($formFilter->getName())) {
+            $filter = new FilterFunctions();
+            $lexikFormFilter = $this->get('lexik_form_filter.query_builder_updater');
+            $waters = $filter->filter($request, $formFilter, $em, $lexikFormFilter, 'EthioCovid19Bundle:Water');
+        }
+        $paginator = $this->get('knp_paginator');
+        $paginatedWaters = $paginator->paginate($waters, /* query NOT result */ $request->query->getInt('page', 1)/* page number */, 15/* limit per page */
+        );
+$water_json =array();
+        foreach($waters as $water){
+          $water=array(
+                 'id'=>$water->getId(),
+                 'startDate'=>$water->getStartDate(),
+                 'endDate'=>$water->getEndDate(),
+                 );
+          $water_json[] = $water;
+
+        }
+
+    // 2. Setup repository of some entity
+        $repoArticles = $em->getRepository(Water::class);
+        
+        // 3. Query how many rows are there in the Articles table
+        $totalArticles = $repoArticles->createQueryBuilder('a')
+            // Filter by some parameter if you want
+            // ->where('a.published = 1')
+            ->select('count(a.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+  
+        return $this->render('water/index.html.twig', array(
+                    'waters' => $paginatedWaters,
+                    'formFilter' => $formFilter->createView(),
+                    'form' => $form->createView(),
+                    'totalArticles' => $totalArticles   
+
+        ));
+    
+  
+      }
+      
+    public function pdfAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $water = $em->getRepository('Covid19Bundle:Water')->findById($id);
+        $water = $em->getRepository('Covid19Bundle:Water')->findById($id);
+
+        $html = $this->renderView('water/pdf.html.twig', array(
+            'water' => $water,
+            'water' => $water,
+        ));
+        return new PdfResponse(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml($html, array('orientation' => 'Portrait',
+                )), 200, array('Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; water="Test.pdf"'));
+    }
+
+    /**
+     * Creates a new water entity.
+     *
+     */
+    public function newAction(Request $request) {
+        $water = new Water();
+        $form = $this->createForm('Ethio\Covid19Bundle\Form\WaterType', $water);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+/** @var UploadedFile $brochureFile */
+            $brochureFile = $form->get('upload_doc')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($brochureFile) {
+                $originalFilename = $brochureFile->getClientOriginalName();
+              //$originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = "bishaanii_documents"; //transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $uploadDoc = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $brochureFile->move(
+                            //$this->getParameter('brochures_directory'),
+                            __DIR__ . '/../../../../web/uploads/bishaanii/documents/', $uploadDoc
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $water->setUploadDoc($uploadDoc);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($water);
+            $em->flush();
+          	// Set a flash message
+           $flashbag = $this->get('session')->getFlashBag();
+            $flashbag->add("success", "R/Pirojektii Bishaanii Successfully Created!");
+            return $this->redirectToRoute('water_show', array('id' => $water->getId()));
+        }
+
+        return $this->render('water/new.html.twig', array(
+                    'water' => $water,
+                    'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a water entity.
+     *
+     */
+    public function showAction(Water $water) {
+        $deleteForm = $this->createDeleteForm($water);
+
+        return $this->render('water/show.html.twig', array(
+                    'water' => $water,
+                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing water entity.
+     *
+     */
+    public function editAction(Request $request, Water $water) {
+    
+          $deleteForm = $this->createDeleteForm($water);
+        $editForm = $this->createForm('Ethio\Covid19Bundle\Form\WaterType', $water);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('water_index');
+        }
+
+      return $this->render('water/edit.html.twig', array(
+                    'water' => $water,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+        ));
+      }
+
+ 
+      
+public function deleteAction(Request $request, $id)
+{
+    $form = $this->createDeleteForm($id);
+    $form->handleRequest($request);
+
+    if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('Covid19Bundle:Water')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find water entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+    }
+
+    return $this->redirect($this->generateUrl('water_index'));
+    $em = $this->getDoctrine()->getManager();
+    $entity = $em->getRepository('Covid19Bundle:Water')->find($id);
+
+    if (!$entity) {
+        throw $this->createNotFoundException('Unable to find water entity.');
+    }
+
+    $em->remove($entity);
+    $em->flush();
+
+
+    return $this->redirect($this->generateUrl('water_index'));
+}
+    /**
+     * Creates a form to delete a water entity.
+     *
+     * @param Water $water The water entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Water $water) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('water_delete', array('id' => $water->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
+        ;
+    }
+
+}

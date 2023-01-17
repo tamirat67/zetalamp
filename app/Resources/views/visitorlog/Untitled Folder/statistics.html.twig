@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+ {% block javascripts %}
+  <script src="{{ asset('assets/assets/dgc/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/assets/dgc/js/font-awesome.min.css')}}"></script>
+    <script src="{{ asset('assets/assets/dgc/js/bootstrap.min.css')}}"></script>
+   <script src="{{ asset('assets/assets/dgc/js/highcharts.js')}}"></script>
+      <script src="{{ asset('assets/assets/dgc/js/exporting.js')}}"></script>
+          <script src="{{ asset('assets/assets/dgc/js/highcharts.scss')}}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+   <script>for(var i = 0; i < cleanArray.length; ++i)
+    cleanArray[i] = cleanArray[i].replace(/(\r\n|\n|\r)/gm,"")
+    </script>
+
+
+<script type="text/javascript">
+    {{ chart(chart) }}
+    
+</script>
+
+<div id="piechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+
+{% endblock %}
+
+
+
+

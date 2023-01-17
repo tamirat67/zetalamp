@@ -1,0 +1,204 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+<div class="row">
+<div class="col-xs-12">
+<!-- PAGE CONTENT BEGINS -->
+
+ <div class="main-content" style="width: auto; height:auto; background-image: url({{ asset('images/background-image-2.gif') }})">
+<div id="login-box" class="login-box" style="border-radius: 25px;
+  border: 4px solid #CAE1FF;
+  padding: 20px; 
+  width: 950px;
+  height: 600px;">
+  <div class="alert alert-block alert-success">
+<button type="button" class="close" data-dismiss="alert">
+<i class="ace-icon fa fa-times"></i>
+</button>
+
+<i class="ace-icon fa fa-check green"></i>
+
+Baga Nagaan Gara
+	<strong class="green">
+										
+		</strong>
+	Gabaasa Qisaasama Hafee!
+				</div>
+{##################################### XXXXXXXXX #######################################}
+       <div id="timeline-1">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+<h1 class="header smaller lighter blue"><b>Gabaasa Qisaasama Hafee!</b></h1>
+{################################## Gamoo(Building Reports)#########################################}
+                    <div class="timeline-container">
+                        <div class="timeline-label">
+                            <span class="label label-default arrowed-in-right label-lg">
+                                <b>{% trans %}Gamoo(Building Reports){% endtrans %}</b>
+
+                            </span>
+                        </div>
+
+                        <div class="timeline-items">
+                            <div class="timeline-item clearfix">
+                                <div class="timeline-info">
+                                    <img    src="{{ asset('image/building.png') }}"   />
+
+                                </div>
+
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Gamoo(Building){% endtrans %}</a>
+                                        </h5> 
+
+
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+ Dizzaayinii Irraa : </a> &nbsp; &nbsp; 
+   {% for dizzaayinii in dizzaayiniis %}
+
+{% set sum = (dizzaayinii.gatiiqorraannaadhiyaate  - dizzaayinii.gatiimirkanaahe)|abs + sum ?? 0 %}
+  {% if loop.last %}{{ sum|abs }}{% endif %}  
+
+             
+    {% endfor %}
+&nbsp; &nbsp; 
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+  Kaffaltii Irraa : </a> &nbsp; &nbsp; &nbsp; &nbsp; 
+    {% for ogeessotaa in ogeessotaas %}
+
+{% set number = (ogeessotaa.kaffaltiigorsaanyknapirojektiitiinhajjotame - ogeessotaa.kaffaltiimirkanaahe)|abs + number ?? 0 %}
+  {% if loop.last %}{{ number|abs  }}{% endif %}  
+        
+       {% endfor %}
+
+ 
+
+                                            <div class="space-6"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+{################################## Daandii(Road Reports)#########################################}
+                                <div class="timeline-label">
+                                    <span class="label label-default arrowed-in-right label-lg">
+                                        <b>{% trans %}Daandii(Road Reports){% endtrans %}</b>
+                                    </span>
+                                </div>
+                                <div class="timeline-info">
+                                    <img    src="{{ asset('image/road.png') }}"   />
+
+                                </div>
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Daandii(Road Reports){% endtrans %}</a>
+
+                                        </h5>  
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+ Dizzaayinii Irraa : </a> &nbsp; &nbsp;
+     {% for daandiidizzaayinii in daandiidizzaayiniis %}
+
+{% set sum = (daandiidizzaayinii.gatiiqorraannaadhiyaate - daandiidizzaayinii.gatiimirkanaahe)|abs + sum ?? 0 %}
+  {% if loop.last %}{{ sum|abs }}{% endif %}  
+
+             
+    {% endfor %} 
+&nbsp; &nbsp; 
+&nbsp; &nbsp;
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+  Kaffaltii Irraa : </a> &nbsp; &nbsp; &nbsp; &nbsp;
+    {% for daandiiOgeessotaa in daandiiOgeessotaas %}
+
+{% set number = (daandiiOgeessotaa.kaffaltiigorsaanyknapirojektiitiinhajjotame - daandiiOgeessotaa.kaffaltiimirkanaahe)|abs + number ?? 0 %}
+  {% if loop.last %}{{ number|abs  }}{% endif %}  
+        
+       {% endfor %}
+
+                                            <div class="space-6"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-label">
+{############################ Bishaanii(Water Report) #################################}
+                                    <span class="label label-default arrowed-in-right label-lg">
+                                        <b> {% trans %}Bishaanii fi Jallisii(Water  and Irrigation Report) {% endtrans %}</b> 
+                                    </span>
+                                </div>
+                                <div class="timeline-info">
+                                    <img    src="{{ asset('image/water.png') }}"   />
+
+                                </div>
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-small">
+                                        <h5 class="widget-title smaller">
+                                            <a href="#" class="blue">{% trans %}Bishaanii fi Jallisii(Water  and Irrigation Report){% endtrans %}</a>
+
+                                        </h5>
+
+
+                                        <span class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+  Dizzaayinii Irraa : </a> &nbsp; &nbsp;
+     {% for bishaaniidizzaayinii in bishaaniidizzaayiniis %}
+
+{% set sum = (bishaaniidizzaayinii.gatiiqorraannaadhiyaate - bishaaniidizzaayinii.gatiimirkanaahe)|abs + sum ?? 0 %}
+  {% if loop.last %}{{ sum|abs }}{% endif %}  
+             
+    {% endfor %}
+ 
+&nbsp; &nbsp; 
+            <a href="#" class="btn-info btn-sm no-radius bigger-125">
+  Kaffaltii Irraa :     </a> &nbsp; &nbsp; &nbsp; &nbsp;
+
+    {% for bishaaniiOgeessotaa in bishaaniiOgeessotaas %}
+
+{% set number = (bishaaniiOgeessotaa.kaffaltiigorsaanyknapirojektiitiinhajjotame - bishaaniiOgeessotaa.kaffaltiimirkanaahe)|abs + number ?? 0 %}
+  {% if loop.last %}{{ number|abs }}{% endif %}  
+        
+       {% endfor %}
+ 
+                                            <div class="space-6"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                            </div>
+
+
+                        </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

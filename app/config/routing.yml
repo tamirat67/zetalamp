@@ -1,0 +1,38 @@
+covid19:
+    resource: "@Covid19Bundle/Resources/config/routing.yml"
+    prefix:   /
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+ocaua:
+    resource: "@OSTUABundle/Resources/config/routing.yml"
+    prefix:   /ocaua/
+locale_language:
+    path:     /{id}/language
+    defaults: { _controller: AppBundle:Default:changeLocale }
+
+switch_language:
+    path:     /{_locale}/
+    defaults: { _controller: Covid19Bundle:Default:homemarquee }
+    requirements:
+        _locale: en|am|or
+homemarquee:
+    path:   /homemarquee
+    defaults: { _controller: Covid19Bundle:Default:homemarquee }
+    requirements:
+        _locale: en|am|or
+
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/my-prefix
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+logout:
+    path: /logout
+homepage:
+    path:     /
+    defaults: { _controller: Covid19Bundle:Default:index }
+
+ 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/html/acims/app/Resources/views/project/show.html.twig</file>
+            <file>file:/var/www/html/acims/src/Ethio/Covid19Bundle/Controller/ProjectController.php</file>
+            <file>file:/var/www/html/acims/app/Resources/views/project/index.html.twig</file>
+            <file>file:/var/www/html/acims/app/Resources/views/project/index.html%20(copy).twig</file>
+            <file>file:/var/www/html/acims/app/Resources/views/project/new.html.twig</file>
+            <file>file:/var/www/html/acims/src/Ethio/Covid19Bundle/Resources/config/routing/project.yml</file>
+            <file>file:/var/www/html/acims/src/Ethio/Covid19Bundle/Filter/ProjectFilterType.php</file>
+            <file>file:/var/www/html/acims/src/Ethio/Covid19Bundle/Form/ProjectType.php</file>
+            <file>file:/var/www/html/acims/app/Resources/views/kaffaltiigalmeessi/index.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

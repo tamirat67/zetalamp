@@ -1,0 +1,56 @@
+{% extends 'home_page.html.twig' %}
+
+ {% block javascripts %}
+  <script src="{{ asset('assets/assets/dgc/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/assets/dgc/js/font-awesome.min.css')}}"></script>
+    <script src="{{ asset('assets/assets/dgc/js/bootstrap.min.css')}}"></script>
+    <script src="{{ asset('assets/assets/dgc/js/morris.js')}}"></script>
+    
+    <script src="{{ asset('assets/assets/dgc/js/highcharts-3d.js')}}"></script>
+        <script src="{{ asset('assets/assets/dgc/js/accessibility.src.js')}}"></script>
+        <script src="{{ asset('assets/assets/dgc/js/export-data.js')}}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    {% include '@DGCChart/Includes/lib_daterangepicker.html.twig' %}
+    {% include '@DGCChart/Includes/lib_echarts.html.twig' %}
+    {% include '@DGCChart/Includes/lib_morris.html.twig' %}
+
+
+
+					<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="widget-box widget-color-green2">
+											<div class="widget-header">
+												<h4 class="widget-title lighter smaller">Building Project Graph</h4>
+											</div>
+{{ chart|raw }}
+											<div class="widget-body">
+												<div class="widget-main padding-8">
+													<ul id="tree1"></ul>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+	
+
+{% block dashboard %}
+    <h1 class="col-md-12 box box-primary" style="padding-left: 20%; background-color: #ddd;">Admin Dashboard</h1>
+{% endblock %}
+
+{% endblock %}
+
+
+

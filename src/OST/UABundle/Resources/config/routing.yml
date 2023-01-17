@@ -1,0 +1,35 @@
+ocaua_mail:
+    resource: "@OSTUABundle/Resources/config/routing/mail.yml"
+    prefix:   /mail
+
+ocaua_user:
+    resource: "@OSTUABundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+ocaua_permission:
+    resource: "@OSTUABundle/Resources/config/routing/permission.yml"
+    prefix:   /permission
+
+ocaua_group:
+    resource: "@OSTUABundle/Resources/config/routing/group.yml"
+    prefix:   /group
+
+ocaua_entity_log:
+    path:     /{selectedBundle}/{selectedEntity}/{id}/entity-log
+    defaults: { _controller: OSTUABundle:Default:logShow }
+    methods:  [GET]
+
+ocaua_check_logs:
+    path:     /checkLogs
+    defaults: { _controller: OSTUABundle:Default:checkLogs }
+    methods:  [GET]
+
+ocaua_homepage:
+    path:     /UADefault
+    defaults: { _controller: OSTUABundle:Default:index }
+        
+#ocaua_check_logs:
+#    path:     /checkLogs
+#    defaults: { _controller: OSTUABundle:Default:checkLogs }
+#    methods:  [GET]
+

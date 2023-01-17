@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta charset="utf-8" />
+        <title>{% block application_title %}{% trans %}ZETA{% endtrans %}{% endblock %}</title>
+
+        <meta name="description" content="Mailbox with some customizations as described in docs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.custom.min.css') }}" />
+         <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/fonts.googleapis.com.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/rollmanage.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('assets/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{ asset('assets/css/ace-skins.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/ace-rtl.min.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('assets/css/jquery.gritter.min.css') }}" />
+         <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/ace.min.js') }}"></script>
+       
+
+         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
+        
+
+    
+        </head>
+         <style> 
+            .circular--square {
+                border-radius: 50%;
+                border-top-left-radius: 50% 50%;
+                border-top-right-radius: 50% 50%;
+                border-bottom-right-radius: 50% 50%;
+                border-bottom-left-radius: 50% 50%;
+            }
+        </style>
+
+        <style type="text/css">
+            .loginheader
+            { font-family: Open Sans; font-size: 26px; font-style: normal; font-variant: normal; font-weight: 900; line-height: 26.6px; }
+        </style>
+
+        <body> 
+       <div id="navbar" style="background-color: #OOAFFO;"  class="navbar navbar-success navbar-success">
+        <div class="col-md-12">
+  <div>
+                    <img class="circular--square pull-left" style="width: 55px; height: 45px;  padding-top: 2px; padding-bottom: 2px; margin-left: 35px" src="{{ asset('image/con3.png') }}" class="profile-pic"/>
+                </div>
+              
+{# #3b5998; #33691e #}
+            <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:50%;">
+
+ 
+</div>
+                
+            </div>
+        </div> 
+        <br>
+            <div class="col-lg-12">
+                <div class="col col-lg-4">
+                {% block body %}
+                {% endblock %}
+                   
+
+            </div>
+
+ {#             <div class="col col-lg-8">
+{% block aboutorg %} 
+            <div class="well well-sm" style="border-radius: 25px;">
+
+
+ {% include 'includes/aboutus.html.twig' %} 
+
+{% endblock %}  
+</div>
+</div>
+                  #}
+<div class="col-lg-12">
+<div class="footer">
+                <div class="footer-inner">
+                    <div class="footer-content">
+                        <span class="bigger-120">
+                            <span class="blue bolder">ZETA</span>
+                            ZETA LAMP © 2022
+                        </span>
+
+                    </div>
+                </div>
+ </div>
+</div>
+</body>
+</html>

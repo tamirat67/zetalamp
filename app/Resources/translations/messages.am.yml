@@ -1,0 +1,151 @@
+Automated: አዉቶመትድ
+Construction: የሕንጻዎች
+'Task Management System': 'ሥራ ማኔጀመንት አፕሊኬሽን'
+Dashboard: 'ዳሽ ቦርድ'
+Home: መነሻ
+'Oromia Zone': 'ኦሮምያ  ዞኖች '
+'Oromia City': 'ኦሮምያ  ከተሞች '
+Language: 'ቋንቋ ማስተካከያ'
+Languages: 'ኦሮምኛ ቋንቋ '
+'Switch Language': 'ቋንቋ ይቀየር'
+'Oromo Language': ኦሮምኛ
+English: እንግሊዝኛ
+Amharic: በአማርኛ
+OCA: ኦሮ/ኮን/አ
+ACIMS: አዉቶ/ኮን/ኢ/ማ/ስ
+
+'Building Project': 'ሕንፃ  ፕሮጀክት'
+'Road Project': 'መንገድ  ፕሮጀክት'
+'Water And Irrigation': 'ዉሃ እና መስኖ'
+
+'Login Statistics': 'የመግቢያ ስታቲስቲክስ'
+'Graph Report': 'የግራፊ ዘገባ'
+'Building Report': 'ሕንፃ ዘገባ'
+'Road Report': 'መንገድ ዘገባ'
+'Water Report': 'ዉሃ እና መስኖ ዘገባ'
+ 
+
+
+Help: 'ተጨማሪ ድጋፍ'
+New: አዲስ
+'Project Code': 'የሰነድ ቁጥር'
+Services: አገልግሎቶች
+'About Us': 'ስለ ሰስተም'
+'Contact Us': አድራሻችን
+'Office/Sector': 'ኦሮምያ  ዞኖች ማስተካከያ'
+'Office Hierarchy': 'ኦሮምያ  ዞኖች ዝርዝር'
+'Welcome to': 'እንኳን ደህና መጡ'
+'Automated Construction Information Management System': 'አውቶሜትድ  ኮንስትራክሽን ኢንፎርሜሽን ማኔጅመንት ስስታም'
+Maps: ካርታ
+Profile: መግለጫ
+Register: መዝገብ
+'Change Password': 'የይለፍ ቃል መቀየሪያ'
+Logout: 'ከድህረ ገፁ መውጫ'
+Payment: 'ክፍያ ሁኔታ'
+'Advance Payment': 'ቅድመ ክፍያ'
+Settings: ማስተካከያ
+'Add Project': 'ፕሮጀክት መዝገባ'
+'Add Design': 'ዲዛይን መዝገባ '
+'Regulatory Branch': 'ቅርንጫፍ ቢሮዎች'
+'Employee performance': 'የሰራተኛ ብቃት ምዘና'
+'Job Opportunity': 'የሥራ ዕድል'
+Location: 'ቦታ አቅጣጫ'
+Woreda: ወረዳ
+Kebele: ቀበሌ
+Design: 'ዲዛይን አሰራር'
+
+'Building Type': 'የህንፃ አይነት'
+'Project Type': 'ፕሮጀክት አይነት'
+Client: 'ፕሮጀክት ባለቤት'
+'Payment Round': 'የክፍያ ዙር'
+'Guarentee Type': 'ጋራንቲ አይነት'
+
+'Eff/Con/Indu/Branch': 'የኮንስትራክሽን ኢንዱስትሪ ብቃት መለኪያ'
+'MSE Setting': 'ጥቃቅንና አነስተኛ ኢንተርፕራይዝ'
+'D/M/GAH': 'ድ/ኤም/ጋአሓ'
+'MSE IMX info': 'ጥ/አ/ኢ ማህበራት ዝርዝር'
+'Name of MSE': 'ጥ/አ/ኢ ማህበራት ሰም'
+'Members of MSE': 'ጥ/አ/ኢ አባላት '
+'Professional Lic': 'የሙያ ፍቃድ'
+'Contractors Info': 'ኮንትራክተሮች ዝርዝር'
+'Consultants Info': 'የአማካሪዎች ዝርዝር'
+'COC Info': 'ስ/ኦ/ስ መረጃ'
+'License Type': 'የሙያ ፍቃድ አይነት'
+'Add Consultant': 'የአማካሪ ምዝገባ'
+'Add Contractors': 'የአማካሪ ምዝገባ'
+
+'HRM Setting': 'የሰው ሀብት መረጃ'
+'Employee Info': 'ሰራተኛ ምዝገባ'
+Transfer: ዝውውር
+
+'Bid Evalution': 'ጨረታ ሰነድ'
+'Bid Record': 'የጨረታ ሰነድ ምዝገባ'
+Machinery: ማሽነሪዎች
+Machineries: ማሽነሪዎች ምዝገባ
+
+Report: ሪፖርት
+'Design Report': 'ዲዛይን ሪፖርት'
+'Building Payments': 'የህንፃ ክፍያ ሪፖርት'
+'Road Payments': 'የመንገድ ክፍያ ሪፖርት'
+'Water and Irrigation Payments': 'የዉሃ እና መስኖ ክፍያ ሪፖርት'
+
+'Job Opp Report': 'የሥራ ዕድል ሪፖርት'
+'Job Opp by Building Pro': 'ሕንፃ ሥራ ለይ የተሳተፉ'
+'Job Opp by Road Pro': 'መንገድ ሥራ ለይ የተሳተፉ'
+'Job Opp by Water & Irrigation Pro': 'ዉሃ እና መስኖ ሥራ ለይ የተሳተፉ'
+
+'Employee Opportunity Report': 'Employee Opportunity Report'
+'Property Report': 'የንብረት ሪፖርት'
+
+Security: 'የድህረ ገፁ ደህንነት'
+'Log Entries': 'ደህንነት ማስታወሻ'
+'User Management': 'የተጠቃሚ ማስታወሻ'
+Group: ቡድን
+Permission: ፈቃድ
+User: ተጠቃሚ
+Manual: 'የአጠቃቀም መመሪያ'
+Documents: ዶክመንት
+Video: ምስል
+'Mission, Vission, Core values and Strategic Themes of Oromia Construction Authority': 'የኦሮሚያ ክልል ኮንስትራክሽንና ባለሥልጣን ተልዕኮ ትግበራና ሥርዓት'
+Mission: ተልዕኮ
+'By using skilled manpower and modern technology delivering quality construction works both domestically and overseas assembling construction machineries and equipment manufacturing spare parts as well as acquiring owning and administering dams constructed by the government collecting charges from the beneficiaries of such dams and expanding such development activities': 'የሰለጠነ የሰው ሃይል እና ዘመናዊ ቴክኖሎጂን በመጠቀም ጥራት ያለው የግንባታ ስራ ሁለቱንም ይሰራል የሀገር ውስጥ እና የባህር ማዶ, የግንባታ ማሽነሪዎችን, እና መሳሪያዎችን ማገጣጠም, ማምረት መለዋወጫ እንዲሁም በመንግስት የተገነቡ ግድቦችን በማግኘት ፣በባለቤትነት እና በማስተዳደር ፣ ከእንደዚህ ዓይነት ግድቦች ተጠቃሚዎች ክፍያዎችን መሰብሰብ እና የልማት ሥራዎችን ማስፋፋት.'
+Vision: ራዕይ
+'To be a worldwide competent construction company by 2026': 'በ 2026 የኦሮሚያ እንዱስትሪ ኮንስትራክሽን እንደ ሀገር ተወዳዳሪ እና ምሳሌ ሆኖ ማየት ነው'
+'Core Value': እሴቶች
+'Strategic Theme': 'ትኩረት አቅጣጫ'
+No: 'ተራ ቁጥር'
+'Advantages of Strategic Theme': 'የትኩረት አቅጣጫ ጥቅሞች'
+'Regulatory Construction': 'ኮንስትራክሽን ሥራ መቆጣጠር'
+'Scope Industry Construction': 'የኮንስትራክሽን ኢንደስትሪ አላማ'
+'Complete quality projects at an affordable price and on time': 'ጥራት ያላቸውን ፕሮጀክቶች በተመጣጣኝ ዋጋ እና በተሰጠበት ጊዜ ወስጥ ማጠናቀቅ'
+'Industrial Construction provides to stakeholders': 'የኢንዱስትሪ ኮንስትራክሽን ለባለድርሻ አካላት ያቀርባል'
+
+'Our core values are': 'የመሥሪያ ቤቱ ዋና እሴቶች'
+'Quality First': 'ጥራትን ማስቀደም'
+'Team Work': 'የቡድን ሥራ'
+'Area of Business': 'የንግድ ሥራ ፍቃድ ዙርያ'
+'Water Infrastructure Construction': 'የዉሃ ኢንፍራስትራክቸር'
+'Transport Infrastructure Construction': 'የትራንስፖርት ኢንፍራስትራክቸር'
+'Building Infrastructure Construction': 'የሕንፃ ኢንፍራስትራክቸር'
+'Irrigation-Dams-Deep Water wells': 'መስኖ ግድብ የዉሃ ቁፋሮ'
+
+'Arsi Zone': 'Arsi Zone'
+'Bale Zone': 'Bale Zone'
+'Buno Bedele Zone': 'Buno Bedele Zone'
+'East Bale Zone': 'East Bale Zone'
+'East Harargeh Zone': 'East Harargeh Zone'
+'East Wolega Zone': 'East Wolega Zone'
+'Guji Zone': 'Guji Zone'
+'Horo Guduru Zone': 'Horo Guduru Zone'
+'Ilubabur Zone': 'Ilubabur Zone'
+'Jimma Zone': 'Jimma Zone'
+'Kelem Wolega Zone': 'Kelem Wolega Zone'
+'North Shewa Zone': 'North Shewa Zone'
+'Oro Special Zone': 'Oro Special Zone'
+'West Arsi Zone': 'West Arsi Zone'
+'West Guji Zone': 'West Guji Zone'
+'West Harargeh Zone': 'West Harargeh Zone'
+'West Wolega Zone': 'West Wolega Zone'
+'West Shewa Zone': 'West Shewa Zone'
+
+

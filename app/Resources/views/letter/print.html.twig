@@ -1,0 +1,218 @@
+<html>
+<head>
+   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+       <link rel="stylesheet" type="text/css" href="/css/main.css"> 
+<style>
+
+/** Define the header rules **/
+header {
+position: fixed;
+top: 0cm;
+left: 0cm;
+right: 0cm;
+height: 3cm;
+}
+/** Define the footer rules **/
+
+footer {
+position: fixed;
+bottom: 0cm;
+left: 0cm;
+right: 0cm;
+height: 3cm;
+}
+hr
+ {
+ background-color: red;
+ width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+  }
+hr
+ {
+ background-color: red;
+ width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+  }
+  
+  @page {
+margin: 30cm 30cm;
+}
+/** Define now the real margins of every page in the PDF **/
+body {
+margin-top: 3cm;
+margin-left: 2cm;
+margin-right: 2cm;
+margin-bottom: 2cm;
+}
+
+ #center 
+ { margin-left: 5px; margin-right: 10px; }
+ .title {
+ text-align: center;
+ }
+ 
+ 
+</style>
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 400px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: center;
+  display: table;
+  clear: both;
+}
+
+.row{
+  display:flex;
+}
+.row>div{
+  padding:15px;
+}
+.text{
+  width:66.6666%
+}
+.image{
+  width:33.333%
+}
+.container .row:nth-child(2n+1){
+  flex-direction:row-reverse
+}
+</style>
+
+<style>
+
+div {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.float-container {
+    padding: 5px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+
+
+
+}  
+</style>
+
+
+</head>
+<body >
+
+<header>
+
+<div class="float-container">
+
+  <div class="float-child" style="text-align: center;">
+     <img style="width:100px; height: 100px;" src="{{ asset('var/www/html/zetalamp/web/image/con3.png') }}" alt="logo"/>
+     
+  </div>
+  
+        <div class = "vertical"></div>
+  <div class="float-child">
+   <h3><b>ዜታ ኮንስትራክሽን ኃየተየግ ማህበር</br>
+     ZETA CONSTRUCTION P.L.C</b></h3>
+  </div>
+  </br></br></br></br>  </br></br></br></br>
+  
+</div>
+
+</header>
+
+</br></br></br></br>
+<hr width="800px;" color="red" size="6">
+
+<footer>
+
+ <hr width="800px;" color="black"
+        size="5">
+ <div class="row" style="text-align: center">
+   <div class="column">
+    TEL. +25111 662 79 15</br>
+     +25111 662 12 69
+
+     </div> 
+       <div class="column">
+       FAX +25111 11 663 10 76</br>
+       P.O.BOX 12990.4042
+       ADDIS ABABA ETHIOPIA</br>
+       EMAIL: zetaconstruct@gmail.com
+
+</div>
+</footer>
+
+<main >
+</br></br></br>
+  <!-- Id: {{ letter.id }} -->
+ <div class="row" style="text-align: left; margin-left: 80%;">
+ ቀን :-
+     {% if letter.date %}{{ letter.date|date('Y-m-d') }}{% endif %} </br>
+ ቁጥር :- {{ letter.refnumber }}</br>
+ </div>
+</br></br>
+ <div style="text-align: left; margin-left: 0%;">
+       <b>ለ:</b>
+       {{ letter.organizationnames }}</br>
+       
+       <u><b>አድስ አበባ</b></u>
+ 
+</div>
+  </br></br>
+  <div style="text-align: center;">
+       <b>ጉዳዩ:</b>
+       <u>{{ letter.subject }}</u>
+ 
+</div>
+ </br> 
+ 
+<div class="tame">
+
+ {{ letter.letterbody }}</br>
+                  
+                  </div>
+                  </br>
+                  </br>
+                  
+ <div style="text-align: right">
+    ከስላምታ ጋር
+ </div>
+ 
+                    
+        </br> </br>  </br>  </br></br></br></br> </br> </br>  </br>  </br></br></br></br>  
+        </br> </br>  </br>  </br></br></br></br> </br> </br>  </br>  </br></br></br></br>                                                
+  <div style="text-align: center">
+                        <img style="height: 36px" src="data:image/png;base64,'{{ code }}'" />
+                        </div> 
+                        
+              	
+       </div>          
+
+
+                 
+
+		
+</main>
+</body>
+</html>

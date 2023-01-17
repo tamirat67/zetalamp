@@ -1,0 +1,61 @@
+{% extends 'home_page.html.twig' %}
+
+{% block body %}
+  <hr>
+    <div class="row">
+                    {% for dizzaayinii in dizzaayiniis %}
+        <div class="col-sm-12 col-sm-offset-1">
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+               Gamoo:
+                <span class="label label-inverse arrowed-in"></span></a>
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Dizzaayinii Irraa : 
+                <span class="label label-inverse arrowed-in">{{ dizzaayinii.gatiiqorraannaadhiyaate - dizzaayinii.gatiimirkanaahe }}</span></a>
+           
+        </div>
+    {% endfor %}
+    </div>
+  <hr>
+   <div class="row">
+    {% for dizzaayinii in dizzaayiniis %}
+        <div class="col-sm-12 col-sm-offset-1">
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                 Daandii:
+                <span class="label label-inverse arrowed-in"></span></a>
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Dizzaayinii Irraa : 
+                <span class="label label-inverse arrowed-in">{{ dizzaayinii.gatiiqorraannaadhiyaate - dizzaayinii.gatiimirkanaahe }}</span></a>
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Kaffaltii Irraa : 
+                <span class="label label-inverse arrowed-in">{{ dizzaayinii.gatiiqorraannaadhiyaate - dizzaayinii.gatiimirkanaahe }}</span>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+  <hr>
+    <div class="row">
+                    {% for ogeessotaa in ogeessotaas %}
+        <div class="col-sm-12 col-sm-offset-1">
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Bish. fi Jallisii: 
+                <span class="label label-inverse arrowed-in"></span></a>
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Sold Tickets : {#{{ sold_tickets }}#}
+                <span class="label label-inverse arrowed-in">{{ ogeessotaa.kaffaltiigorsaanyknapirojektiitiinhajjotame - ogeessotaa.kaffaltiimirkanaahe }}</span></a>
+            <a href="#" class="btn btn-back-message-list btn-info btn-sm no-radius bigger-125">
+                <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                Available Tickets : {#{{ available_tickets }}#}
+                <span class="label label-inverse arrowed-in">{{ ogeessotaa.kaffaltiigorsaanyknapirojektiitiinhajjotame - ogeessotaa.kaffaltiimirkanaahe }}</span>
+            </a>
+        </div>
+                    {% endfor %}
+    </div>
+ 
+{% endblock %}
